@@ -7,7 +7,7 @@ namespace WebCommerce.Models.Classes
 {
 	public class Estado
 	{
-		public int Id { get; set; }
+		public int IdEstado { get; set; }
 		public String Nome { get; set; }
 		public String Sigla { get; set; }
 	}

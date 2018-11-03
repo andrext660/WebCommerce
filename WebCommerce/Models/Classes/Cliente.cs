@@ -7,7 +7,7 @@ namespace WebCommerce.Models.Classes
 {
 	public class Cliente
 	{
-		public int Id { get; set; }
+		public int IdCliente { get; set; }
 		public String Nome { get; set; }
 		public DateTime DataNascimento { get; set; }
 		public String CPF { get; set; }

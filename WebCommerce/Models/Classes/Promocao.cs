@@ -7,7 +7,7 @@ namespace WebCommerce.Models.Classes
 {
 	public class Promocao
 	{
-		public int Id { get; set; }
+		public int IdPromo { get; set; }
 		public int DescontoPorcentagem { get; set; }
 		public float DescontoQuantidade { get; set; }
 		public DateTime DataPrazo { get; set; }

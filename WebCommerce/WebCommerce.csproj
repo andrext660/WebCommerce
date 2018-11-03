@@ -211,6 +211,7 @@
     <Compile Include="Models\Classes\Produto.cs" />
     <Compile Include="Models\Classes\Promocao.cs" />
     <Compile Include="Models\Classes\Venda.cs" />
+    <Compile Include="Models\Fluent\DataBaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -276,7 +277,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Fluent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
