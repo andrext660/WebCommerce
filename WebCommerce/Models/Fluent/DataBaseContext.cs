@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
-
-
+using System.Data.Entity;
 
 namespace WebCommerce.Models.Fluent
 {
@@ -15,6 +13,7 @@ namespace WebCommerce.Models.Fluent
 
         public DataBaseContext() : base("name=DataBaseContext")
         {
+
         }
 
 
@@ -23,15 +22,13 @@ namespace WebCommerce.Models.Fluent
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             base.OnModelCreating(modelBuilder);
 
-            
-        }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
 
         }
+
+      
 
 
     }
