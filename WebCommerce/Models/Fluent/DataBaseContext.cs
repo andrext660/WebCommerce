@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 
+
+
 namespace WebCommerce.Models.Fluent
 {
     public class DataBaseContext : DbContext
