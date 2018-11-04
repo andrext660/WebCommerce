@@ -17,6 +17,15 @@ namespace WebCommerce.Models.Fluent
 
         }
 
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cliente> Aluno { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cupom> Cupom { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Estado> Estado { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Produto> Produto { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Endereco> Endereco { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Promocao> Promocao { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Venda> Venda { get; set; }
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Categoria> Categoria { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,27 +38,27 @@ namespace WebCommerce.Models.Fluent
 
 
             //Venda
-            modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Id);
-            modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Data);
-            modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.ValorTotal);
-            modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Pago);
+           // modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Id);
+            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Data);
+            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.ValorTotal);
+            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Pago);
 
             //Venda
 
 
 
             //Produto
-            modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Nome);
-            modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Preco);
-            modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.QuantidadeDisponivel);
-            modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Detalhes);
+            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Nome);
+            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Preco);
+            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.QuantidadeDisponivel);
+            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Detalhes);
 
             //Produto
 
 
 
             // Relacionamento um para muitos //
-            modelBuilder.Entity<Produto>().HasOne(g => g.Venda).WithMany(p => p.Produtos);
+            //modelBuilder.Entity<Produto>().HasOne(g => g.Venda).WithMany(p => p.Produtos);
 
 
         }
