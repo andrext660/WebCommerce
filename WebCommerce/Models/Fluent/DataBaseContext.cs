@@ -37,15 +37,25 @@ namespace WebCommerce.Models.Fluent
             base.OnModelCreating(modelBuilder);
 
 
+            //aqui está add as validacoes criadas nas classes Map;
+            modelBuilder.Configurations.Add(new ClienteMap());
+            modelBuilder.Configurations.Add(new CupomMap());
+            modelBuilder.Configurations.Add(new VendaMap());
+            modelBuilder.Configurations.Add(new CategoriaMap());
+            modelBuilder.Configurations.Add(new PromocaoMap());
+            modelBuilder.Configurations.Add(new EstadoMap());
+            modelBuilder.Configurations.Add(new EnderecoMap());
+            modelBuilder.Configurations.Add(new ProdutoMap());
+
+            base.OnModelCreating(modelBuilder);
+
             //Venda
-           // modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Id);
+            // modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Id);
             //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Data);
             //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.ValorTotal);
             //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Pago);
 
             //Venda
-
-
 
             //Produto
             //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Nome);
@@ -54,8 +64,6 @@ namespace WebCommerce.Models.Fluent
             //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Detalhes);
 
             //Produto
-
-
 
             // Relacionamento um para muitos //
             //modelBuilder.Entity<Produto>().HasOne(g => g.Venda).WithMany(p => p.Produtos);
