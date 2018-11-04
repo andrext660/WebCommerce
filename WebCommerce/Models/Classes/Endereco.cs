@@ -7,7 +7,7 @@ namespace WebCommerce.Models.Classes
 {
 	public class Endereco
 	{
-		public int IdEndereco { get; set; }
+		public int Id { get; set; }
 		public String Logradouro { get; set; }		
 		public String Bairro { get; set; }
 		public String CEP { get; set; }
