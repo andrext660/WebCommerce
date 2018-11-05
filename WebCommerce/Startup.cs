@@ -8,8 +8,6 @@ namespace WebCommerce
     {
         public void Configuration(IAppBuilder app)
         {
-           /// teste 3
-           /// // lalalalal
             ConfigureAuth(app);
         }
     }
