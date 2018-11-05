@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity;
 using WebCommerce.Models.Classes;
+using WebCommerce.Models.FluentMaps;
 
 namespace WebCommerce.Models.Fluent
 {
@@ -16,7 +17,6 @@ namespace WebCommerce.Models.Fluent
         {
 
         }
-
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cliente> Aluno { get; set; }
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cupom> Cupom { get; set; }
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Estado> Estado { get; set; }
@@ -48,31 +48,6 @@ namespace WebCommerce.Models.Fluent
             modelBuilder.Configurations.Add(new ProdutoMap());
 
             base.OnModelCreating(modelBuilder);
-
-            //Venda
-            // modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Id);
-            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Data);
-            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.ValorTotal);
-            //modelBuilder.Entity<Venda>().ToTable("Vendas").Property(g => g.Pago);
-
-            //Venda
-
-            //Produto
-            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Nome);
-            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Preco);
-            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.QuantidadeDisponivel);
-            //modelBuilder.Entity<Produto>().ToTable("Produtos").Property(g => g.Detalhes);
-
-            //Produto
-
-            // Relacionamento um para muitos //
-            //modelBuilder.Entity<Produto>().HasOne(g => g.Venda).WithMany(p => p.Produtos);
-
-
-        }
-
-      
-
-
+        }  
     }
 }

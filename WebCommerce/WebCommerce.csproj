@@ -211,7 +211,15 @@
     <Compile Include="Models\Classes\Produto.cs" />
     <Compile Include="Models\Classes\Promocao.cs" />
     <Compile Include="Models\Classes\Venda.cs" />
-    <Compile Include="Models\Fluent\DataBaseContext.cs" />
+    <Compile Include="Models\Context\DataBaseContext.cs" />
+    <Compile Include="Models\FluentMaps\CategoriaMap.cs" />
+    <Compile Include="Models\FluentMaps\ClienteMap.cs" />
+    <Compile Include="Models\FluentMaps\CupomMap.cs" />
+    <Compile Include="Models\FluentMaps\EnderecoMap.cs" />
+    <Compile Include="Models\FluentMaps\EstadoMap.cs" />
+    <Compile Include="Models\FluentMaps\ProdutoMap.cs" />
+    <Compile Include="Models\FluentMaps\PromocaoMap.cs" />
+    <Compile Include="Models\FluentMaps\VendaMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

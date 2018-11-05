@@ -11,6 +11,6 @@ namespace WebCommerce.Models.Classes
 		public String Nome { get; set; }
 		public String Sigla { get; set; }
 
-        public virtual IList<Endereco> ListaEndereco { get; set; }
+        //public virtual IList<Endereco> ListaEndereco { get; set; }
     }
 }
