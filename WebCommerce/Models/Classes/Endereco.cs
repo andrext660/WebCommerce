@@ -14,6 +14,6 @@ namespace WebCommerce.Models.Classes
 		public int Numero { get; set; }
 		public String Cidade { get; set; }
 		public int? IdEstado { get; set; }
-		public Endereco Estado { get; set; }
+		public Estado Estado { get; set; }
 	}
 }

@@ -10,5 +10,7 @@ namespace WebCommerce.Models.Classes
 		public int Id { get; set; }
 		public String Nome { get; set; }
 		public String Sigla { get; set; }
-	}
+
+        public virtual IList<Endereco> Endereco { get; set; }
+    }
 }

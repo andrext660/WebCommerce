@@ -1,8 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-public class Class1
+namespace WebCommerce.Models.FluentMaps
 {
-	public Class1()
-	{
-	}
+    public class EstadoMap : EntityTypeConfiguration<Estado>
+    {
+        public EstadoMap()
+        {
+            ToTable("Estados");
+            HasKey(a => a.Id).
+            Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(a => a.Nome).IsRequired().HasColumnType("Varchar").HasColumnName("Nome").HasParameterName("Nome").HasMaxLength(20);
+            Property(a => a.Sigla).IsRequired().HasColumnType("Varchar").HasColumnName("Sigla").HasParameterName("Sigla").HasMaxLength(2);
+        }
+    }
 }
