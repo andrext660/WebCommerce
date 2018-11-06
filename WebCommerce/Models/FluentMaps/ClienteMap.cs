@@ -20,8 +20,8 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.CPF).IsRequired().HasColumnType("Varchar").HasColumnName("CPF").HasParameterName("CPF");
             Property(a => a.Telefone).IsRequired().HasColumnType("Varchar").HasColumnName("Telefone").HasParameterName("Telefone");
             Property(a => a.IdEndereco).IsRequired().HasColumnName("Endereco");
-
-            HasRequired(a => a.Endereco).WithRequiredPrincipal();
-        }
+			HasRequired(a => a.Endereco).WithRequiredPrincipal();
+			HasRequired(e => e.ListaVenda).WithMany();
+		}
     }
 }

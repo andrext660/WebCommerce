@@ -12,13 +12,9 @@ namespace WebCommerce.Models.Classes
 		public float Preco { get; set; }
 		public int QuantidadeDisponivel { get; set; }
 		public String Detalhes { get; set; }
-
 		public int? IdCategoria { get; set; }
 		public Categoria Categoria { get; set; }
-
 		public int? IdPromocao { get; set; }
 		public Promocao Promocao { get; set; }
-
-        
 	}
 }

@@ -19,6 +19,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.ValorTotal).IsRequired().HasColumnName("ValorTotal").HasParameterName("Valor");
             Property(a => a.Pago).HasColumnName("Pago").HasParameterName("Status");
             Property(a => a.CodCupom).HasColumnName("CodCupom");
+			HasRequired(c => c.ListaProdutos).WithMany();
         }
     }
 }

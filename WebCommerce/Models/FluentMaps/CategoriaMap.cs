@@ -17,6 +17,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(a => a.Nome).IsRequired().HasColumnType("Varchar").HasColumnName("Nome").HasParameterName("Nome");
             Property(a => a.Descricao).HasColumnName("Descricao").HasColumnType("Varchar").HasParameterName("Descrição");
+			HasRequired(c => c.ListaCategoria).WithMany();
         }
     }
 }

@@ -21,10 +21,8 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Detalhes).IsRequired().HasColumnType("Varchar").HasColumnName("Detalhes").HasParameterName("Detalhes");
             Property(a => a.IdCategoria).IsRequired().HasColumnName("IdCategoria");
             Property(a => a.IdPromocao).IsRequired().HasColumnName("IdPromocao");
-
             HasRequired(a => a.Categoria).WithRequiredPrincipal();
             HasRequired(a => a.Promocao).WithRequiredPrincipal();
-
         }
     }
 }
