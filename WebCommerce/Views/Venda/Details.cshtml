@@ -1,0 +1,50 @@
+﻿@model WebCommerce.Models.Classes.Venda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Venda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodCupom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodCupom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

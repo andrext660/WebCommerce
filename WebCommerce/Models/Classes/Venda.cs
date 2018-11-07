@@ -16,6 +16,7 @@ namespace WebCommerce.Models.Classes
 		public float ValorTotal { get; set; }
 		public Boolean Pago { get; set; }
         public String CodCupom { get; set; }
+
         public IEnumerable<Produto> ListaProdutos { get; set; }
        
 	}

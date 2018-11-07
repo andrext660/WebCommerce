@@ -15,7 +15,7 @@ namespace WebCommerce.Models.Fluent
 
         public DataBaseContext() : base("name=DataBaseContext")
         {
-
+          
         }
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cliente> Aluno { get; set; }
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cupom> Cupom { get; set; }

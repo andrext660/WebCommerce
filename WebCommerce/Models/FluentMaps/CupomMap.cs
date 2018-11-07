@@ -20,6 +20,8 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Valido).HasColumnName("Valido").HasColumnType("boolean").HasParameterName("Válido");
             Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade").HasParameterName("Quantidade");
             Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao").HasParameterName("Descricao");
+            
+            HasRequired(c => c.ListaCupom).WithMany();
         }
     }
 }

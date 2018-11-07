@@ -23,11 +23,26 @@ namespace WebCommerce.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cliente> Clientes { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Categoria> Categorias { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Produto> Produtoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Promocao> Promocaos { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Endereco> Enderecoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Estado> Estadoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Venda> Vendas { get; set; }
     }
 }
