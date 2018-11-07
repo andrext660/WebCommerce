@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using WebCommerce.Models.Classes;
+using System.Data.Entity.ModelConfiguration;
 
 namespace WebCommerce.Models.FluentMaps
 {
@@ -20,8 +16,17 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Valido).HasColumnName("Valido").HasColumnType("boolean").HasParameterName("Válido");
             Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade").HasParameterName("Quantidade");
             Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao").HasParameterName("Descricao");
-            
-            HasRequired(c => c.ListaCupom).WithMany();
+
+            HasMany<Cliente>(s => s.ListaCliente)
+                .WithMany(a => a.ListaCupom)
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("ClienteRefId");
+                    cs.MapRightKey("CupomRefId");
+                    cs.ToTable("ClienteCupom");
+                });
+
+
         }
     }
 }

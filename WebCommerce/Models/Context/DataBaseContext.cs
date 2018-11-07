@@ -17,14 +17,14 @@ namespace WebCommerce.Models.Fluent
         {
           
         }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cliente> Aluno { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cupom> Cupom { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Estado> Estado { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Produto> Produto { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Endereco> Endereco { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Promocao> Promocao { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Venda> Venda { get; set; }
-        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Categoria> Categoria { get; set; }
+        public DbSet<Cliente> Aluno { get; set; }
+        public DbSet<Cupom> Cupom { get; set; }
+        public DbSet<Estado> Estado { get; set; }
+        public DbSet<Produto> Produto { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
+        public DbSet<Promocao> Promocao { get; set; }
+        public DbSet<Venda> Venda { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

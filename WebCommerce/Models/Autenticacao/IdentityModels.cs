@@ -44,5 +44,7 @@ namespace WebCommerce.Models
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Estado> Estadoes { get; set; }
 
         public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Venda> Vendas { get; set; }
+
+        public System.Data.Entity.DbSet<WebCommerce.Models.Classes.Cupom> Cupoms { get; set; }
     }
 }

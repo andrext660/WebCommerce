@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,24 +8,24 @@ namespace WebCommerce.Models.Classes
 {
 	public class Cupom
 	{
-
-
         public Cupom()
         {
-            ListaCupom = new List<Cupom>();
+            ListaCliente = new List<Cliente>();
         }
 
-
+        [Key]
         public int Codigo { get; set; }
 		public float DescontoQuantidade { get; set; }
 		public int DescontoPorcentagem { get; set; }
-		public Boolean Valido { get; set; }
+		public bool Valido { get; set; }
 		public int Quantidade { get; set; }
-		public String Descricao { get; set; }
+		public string Descricao { get; set; }
 
-        public IEnumerable<Cupom> ListaCupom { get; set; }
+        //public IEnumerable<Cupom> ListaCupom { get; set; }
+
+        public virtual ICollection<Cliente> ListaCliente { get; set; }
 
 
-    
+
     }
 }

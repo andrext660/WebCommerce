@@ -14,10 +14,11 @@ namespace WebCommerce.Models.Classes
 		public int Id { get; set; }
 		public DateTime Data { get; set; }
 		public float ValorTotal { get; set; }
-		public Boolean Pago { get; set; }
-        public String CodCupom { get; set; }
+		public bool Pago { get; set; }
+        public int CodCupom { get; set; }
+        public int IdCliente { get; set; }
 
-        public IEnumerable<Produto> ListaProdutos { get; set; }
+        public virtual ICollection<Produto> ListaProdutos { get; set; }
        
 	}
 }
