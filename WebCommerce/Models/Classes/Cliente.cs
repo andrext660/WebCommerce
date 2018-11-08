@@ -7,6 +7,11 @@ namespace WebCommerce.Models.Classes
 {
 	public class Cliente
 	{
+        public Cliente()
+        {
+            ListaVenda = new List<Venda>();
+            ListaCupom = new List<Cupom>();
+        }
 
         public int Id { get; set; }
 		public string Nome { get; set; }
@@ -19,10 +24,6 @@ namespace WebCommerce.Models.Classes
         public virtual ICollection<Venda> ListaVenda { get; set; }
         public virtual ICollection<Cupom> ListaCupom { get; set; }
 
-        public Cliente()
-        {
-            this.ListaVenda = new List<Venda>();
-            this.ListaCupom = new List<Cupom>();
-        }
+        
     }
 }

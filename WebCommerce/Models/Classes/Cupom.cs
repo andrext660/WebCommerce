@@ -13,7 +13,7 @@ namespace WebCommerce.Models.Classes
             ListaCliente = new List<Cliente>();
         }
 
-    
+        [Key]
         public int Codigo { get; set; }
 		public float DescontoQuantidade { get; set; }
 		public int DescontoPorcentagem { get; set; }
