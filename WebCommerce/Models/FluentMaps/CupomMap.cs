@@ -9,7 +9,7 @@ namespace WebCommerce.Models.FluentMaps
         public CupomMap()
         {
             ToTable("Cupons");
-            HasKey(a => a.Codigo);
+            HasKey(a => a.Codigo).
             Property(a => a.Codigo).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(a => a.DescontoQuantidade).IsRequired().HasColumnType("float").HasColumnName("DescontoQuantidade").HasParameterName("Desconto Quantidade");
             Property(a => a.DescontoPorcentagem).IsRequired().HasColumnType("int").HasColumnName("DescontoPorcentagem").HasParameterName("Desconto Porcentagem");
@@ -17,7 +17,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade").HasParameterName("Quantidade");
             Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao").HasParameterName("Descricao");
 
-            HasMany(s => s.ListaCliente)
+            HasMany<Cliente>(s => s.ListaCliente)
                 .WithMany(a => a.ListaCupom)
                 .Map(cs =>
                 {

@@ -11,17 +11,17 @@ using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
 {
-    public class CupomController : Controller
+    public class CupomsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Cupom
+        // GET: Cupoms
         public ActionResult Index()
         {
             return View(db.Cupoms.ToList());
         }
 
-        // GET: Cupom/Details/5
+        // GET: Cupoms/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,13 +36,13 @@ namespace WebCommerce.Controllers
             return View(cupom);
         }
 
-        // GET: Cupom/Create
+        // GET: Cupoms/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Cupom/Create
+        // POST: Cupoms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -59,7 +59,7 @@ namespace WebCommerce.Controllers
             return View(cupom);
         }
 
-        // GET: Cupom/Edit/5
+        // GET: Cupoms/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,7 +74,7 @@ namespace WebCommerce.Controllers
             return View(cupom);
         }
 
-        // POST: Cupom/Edit/5
+        // POST: Cupoms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,7 +90,7 @@ namespace WebCommerce.Controllers
             return View(cupom);
         }
 
-        // GET: Cupom/Delete/5
+        // GET: Cupoms/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +105,7 @@ namespace WebCommerce.Controllers
             return View(cupom);
         }
 
-        // POST: Cupom/Delete/5
+        // POST: Cupoms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
