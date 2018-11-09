@@ -47,7 +47,7 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Codigo,DescontoQuantidade,DescontoPorcentagem,Valido,Quantidade,Descricao")] Cupom cupom)
+        public ActionResult Create([Bind(Include = "Id,DescontoQuantidade,DescontoPorcentagem,Valido,Quantidade,Descricao")] Cupom cupom)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Codigo,DescontoQuantidade,DescontoPorcentagem,Valido,Quantidade,Descricao")] Cupom cupom)
+        public ActionResult Edit([Bind(Include = "Id,DescontoQuantidade,DescontoPorcentagem,Valido,Quantidade,Descricao")] Cupom cupom)
         {
             if (ModelState.IsValid)
             {
