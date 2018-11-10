@@ -16,7 +16,6 @@ namespace WebCommerce.Models.Classes
 		public bool Valido { get; set; }
 		public int Quantidade { get; set; }
 		public string Descricao { get; set; }
-
         
         }
 
