@@ -194,6 +194,7 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
+    <Compile Include="Controllers\EnderecosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
@@ -430,6 +431,11 @@
     <Content Include="Views\Promocao\Edit.cshtml" />
     <Content Include="Views\Promocao\Index.cshtml" />
     <Content Include="Views\Cliente\_CadastrarEndereco.cshtml" />
+    <Content Include="Views\Enderecos\Create.cshtml" />
+    <Content Include="Views\Enderecos\Delete.cshtml" />
+    <Content Include="Views\Enderecos\Details.cshtml" />
+    <Content Include="Views\Enderecos\Edit.cshtml" />
+    <Content Include="Views\Enderecos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
