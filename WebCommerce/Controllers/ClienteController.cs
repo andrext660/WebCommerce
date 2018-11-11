@@ -41,6 +41,7 @@ namespace WebCommerce.Controllers
         {
 
             ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro");
+            ViewBag.IdEstado = new SelectList(db.Estadoes, "Id", "Nome");
 
             return View();
         }
@@ -50,16 +51,34 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone,IdEndereco")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone")] Cliente cliente, FormCollection form)
         {
-            if (ModelState.IsValid)
-            {
-                db.Clientes.Add(cliente);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro",cliente.IdEndereco);
+            try
+            {
+                cliente.Endereco = new Endereco();
+                cliente.Endereco.Cidade = form["Cidade"];
+                cliente.Endereco.CEP = form["CEP"];
+                cliente.Endereco.Logradouro = form["Logradouro"];
+                cliente.Endereco.Numero = Convert.ToInt32(form["Numero"]);
+                cliente.Endereco.Bairro = form["Bairro"];
+                cliente.Endereco.Estado = db.Estadoes.Find(Convert.ToInt32(form["IdEstado"]));
+
+
+                if (ModelState.IsValid)
+                {
+                    db.Enderecoes.Add(cliente.Endereco);
+                    cliente.IdEndereco = cliente.Endereco.Id;
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro", cliente.IdEndereco);
+
+            } catch
+            {
+                return View();            }
 
             return View(cliente);
         }
