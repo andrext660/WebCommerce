@@ -12,15 +12,15 @@ namespace WebCommerce.Models.FluentMaps
     {
         public EnderecoMap()
         {
-            ToTable("Enderecos");
+		ToTable("Enderecos");
             HasKey(a => a.Id).
             Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(a => a.Logradouro).IsRequired().HasColumnType("Varchar").HasColumnName("Logradouro").HasParameterName("Logradouro");
-            Property(a => a.Bairro).IsRequired().HasColumnType("Varchar").HasColumnName("Bairro").HasParameterName("Bairro");
-            Property(a => a.CEP).IsRequired().HasColumnType("Varchar").HasColumnName("CEP").HasParameterName("CEP");
-            Property(a => a.Cidade).IsRequired().HasColumnType("Varchar").HasColumnName("Cidade").HasParameterName("Cidade");
-            Property(a => a.IdEstado).IsRequired().HasColumnName("Estado");
-            HasRequired(a => a.Estado).WithRequiredPrincipal();
+			Property(a => a.CEP).IsRequired().HasColumnType("Varchar").HasColumnName("CEP");
+            Property(a => a.Rua).IsRequired().HasColumnType("Varchar").HasColumnName("Logradouro");
+            Property(a => a.Bairro).IsRequired().HasColumnType("Varchar").HasColumnName("Bairro");
+            Property(a => a.Cidade).IsRequired().HasColumnType("Varchar").HasColumnName("Cidade");
+            Property(a => a.Estado).IsRequired().HasColumnType("Varchar").HasColumnName("Estado");
+			Property(a => a.Numero).IsRequired().HasColumnType("Integer").HasColumnName("Numero");
         }
     }
 }

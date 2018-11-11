@@ -41,7 +41,6 @@ namespace WebCommerce.Controllers
         {
 
             ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro");
-            ViewBag.IdEstado = new SelectList(db.Estadoes, "Id", "Nome");
 
             return View();
         }
@@ -57,14 +56,13 @@ namespace WebCommerce.Controllers
             try
             {
                 cliente.Endereco = new Endereco();
-                cliente.Endereco.Cidade = form["Cidade"];
-                cliente.Endereco.CEP = form["CEP"];
-                cliente.Endereco.Logradouro = form["Logradouro"];
-                cliente.Endereco.Numero = Convert.ToInt32(form["Numero"]);
-                cliente.Endereco.Bairro = form["Bairro"];
-                cliente.Endereco.Estado = db.Estadoes.Find(Convert.ToInt32(form["IdEstado"]));
-
-
+				cliente.Endereco.CEP = form["CEP"];
+				cliente.Endereco.Rua = form["Rua"];
+				cliente.Endereco.Bairro = form["Bairro"];
+				cliente.Endereco.Cidade = form["Cidade"];
+				cliente.Endereco.Estado = form["Estado"];
+				cliente.Endereco.Numero = Convert.ToInt32(form["Numero"]);
+				
                 if (ModelState.IsValid)
                 {
                     db.Enderecoes.Add(cliente.Endereco);
