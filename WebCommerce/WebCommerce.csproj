@@ -459,6 +459,7 @@
     <Content Include="Views\Endereco\Edit.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Produto\_Produto.cshtml" />
+    <Content Include="Views\Cliente\_CadastrarEndereco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
