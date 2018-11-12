@@ -15,9 +15,9 @@ namespace WebCommerce.Models.FluentMaps
             ToTable("Categorias");
             HasKey(a => a.Id).
             Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(a => a.Nome).IsRequired().HasColumnType("Varchar").HasColumnName("Nome").HasParameterName("Nome");
-            Property(a => a.Descricao).HasColumnName("Descricao").HasColumnType("Varchar").HasParameterName("Descrição");
-			HasRequired(c => c.ListaCategoria).WithMany();
+            Property(a => a.Nome).HasMaxLength(30).IsRequired().HasColumnType("Varchar").HasColumnName("Nome");
+            Property(a => a.Descricao).HasMaxLength(30).HasColumnName("Descricao").HasColumnType("Varchar");
+			HasRequired(c => c.ListaProduto).WithMany();
         }
     }
 }

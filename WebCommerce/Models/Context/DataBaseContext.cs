@@ -19,7 +19,7 @@ namespace WebCommerce.Models.Fluent
         }
         public DbSet<Cliente> Aluno { get; set; }
         public DbSet<Cupom> Cupom { get; set; }
-        public DbSet<Estado> Estado { get; set; }
+  
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Promocao> Promocao { get; set; }
@@ -43,7 +43,6 @@ namespace WebCommerce.Models.Fluent
             modelBuilder.Configurations.Add(new VendaMap());
             modelBuilder.Configurations.Add(new CategoriaMap());
             modelBuilder.Configurations.Add(new PromocaoMap());
-            modelBuilder.Configurations.Add(new EstadoMap());
             modelBuilder.Configurations.Add(new EnderecoMap());
             modelBuilder.Configurations.Add(new ProdutoMap());
 

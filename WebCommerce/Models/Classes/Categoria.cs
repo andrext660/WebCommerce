@@ -9,12 +9,12 @@ namespace WebCommerce.Models.Classes
 	{
 		public Categoria()
 		{
-			ListaCategoria = new List<Categoria>();
+			ListaProduto = new List<Produto>();
 		}
 		public int Id { get; set; }
 		public String Nome { get; set; }
 		public String Descricao { get; set; }
 
-		public IEnumerable<Categoria> ListaCategoria { get; set; }
+		public IEnumerable<Produto> ListaProduto { get; set; }
 	}
 }
