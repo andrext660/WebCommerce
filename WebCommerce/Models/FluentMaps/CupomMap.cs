@@ -14,7 +14,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.DescontoPorcentagem).IsRequired().HasColumnType("int").HasColumnName("DescontoPorcentagem");
             Property(a => a.Valido).HasColumnName("Valido").HasColumnType("boolean");
             Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade");
-            Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao");
+            Property(a => a.Descricao).HasMaxLength(30).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao");
 
 
 
