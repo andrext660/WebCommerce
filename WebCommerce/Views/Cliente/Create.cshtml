@@ -43,19 +43,21 @@
             @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
         </div>
     </div>
- 
+
+
+
 
     @* Serviço de CEP *@
-   
-        <!-- Adicionando JQuery -->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous"></script>
 
-        <!-- Adicionando Javascript -->
-        <script type="text/javascript">
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 
-        $(document).ready(function() {
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript">
+
+        $(document).ready(function () {
 
             function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.
@@ -67,7 +69,7 @@
             }
 
             //Quando o campo cep perde o foco.
-            $("#cep").blur(function() {
+            $("#cep").blur(function () {
 
                 //Nova variável "cep" somente com dígitos.
                 var cep = $(this).val().replace(/\D/g, '');
@@ -79,7 +81,7 @@
                     var validacep = /^[0-9]{8}$/;
 
                     //Valida o formato do CEP.
-                    if(validacep.test(cep)) {
+                    if (validacep.test(cep)) {
 
                         //Preenche os campos com "..." enquanto consulta webservice.
                         $("#rua").val("...");
@@ -89,7 +91,7 @@
                         $("#ibge").val("...");
 
                         //Consulta o webservice viacep.com.br/
-                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
                             if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
@@ -119,11 +121,10 @@
             });
         });
 
-        </script>
-    
+    </script>
 
-    
-        <!-- Inicio do formulario -->
+
+   <!-- Inicio do formulario -->
         <form method="get" action=".">
             <label>
                 Cep:
@@ -145,21 +146,21 @@
                 Estado:
                 <input name="uf" type="text" id="uf" size="2" />
             </label><br />
-            @*<label>
+            @**<label>
                 IBGE:
                 <input name="ibge" type="text" id="ibge" size="8" />
-            </label><br />*@
-        </form>
-    
-
-@* Serviço de CEP*@
+            </label><br />
+        </form>*@
 
 
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Create" class="btn btn-default" />
+    @* Serviço de CEP*@
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
     </div>
-</div>
 </div>
 }
 
