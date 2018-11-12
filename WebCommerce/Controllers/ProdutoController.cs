@@ -16,9 +16,16 @@ namespace WebCommerce.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produto
-        public ActionResult Index()
+        public ActionResult Index(string Pesquisa = "")
         {
-            return View(db.Produtoes.ToList());
+            var p = db.Produtoes.AsQueryable();
+            if (!string.IsNullOrEmpty(Pesquisa))
+                p = p.Where(c => c.Nome.Contains(Pesquisa));
+            p = p.OrderBy(c => c.Nome);
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Produto", p.ToList());
+            return View(p.ToList());
         }
 
         // GET: Produto/Details/5
