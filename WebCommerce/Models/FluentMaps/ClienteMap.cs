@@ -15,10 +15,10 @@ namespace WebCommerce.Models.FluentMaps
             ToTable("Clientes");
             HasKey(a => a.Id).
             Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(a => a.Nome).IsRequired().HasColumnType("Varchar").HasColumnName("Nome").HasParameterName("Nome");
-            Property(a => a.DataNascimento).IsRequired().HasColumnType("DateTime").HasColumnName("DataNasc").HasParameterName("Data de Nascimento");
+            Property(a => a.Nome).IsRequired().HasColumnType("Varchar").HasColumnName("Nome");
+            Property(a => a.DataNascimento).IsRequired().HasColumnType("DateTime").HasColumnName("DataNasc");
             Property(a => a.CPF).IsRequired().HasColumnType("Varchar").HasColumnName("CPF").HasParameterName("CPF");
-            Property(a => a.Telefone).IsRequired().HasColumnType("Varchar").HasColumnName("Telefone").HasParameterName("Telefone");
+            Property(a => a.Telefone).IsRequired().HasColumnType("Varchar").HasColumnName("Telefone");
             Property(a => a.IdEndereco).IsRequired().HasColumnName("Endereco");
 			HasRequired(a => a.Endereco).WithRequiredPrincipal();
 			HasRequired(e => e.ListaVenda).WithMany();

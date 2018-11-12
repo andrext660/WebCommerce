@@ -19,6 +19,7 @@ namespace WebCommerce.Models.Fluent
         }
         public DbSet<Cliente> Aluno { get; set; }
         public DbSet<Cupom> Cupom { get; set; }
+  
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Promocao> Promocao { get; set; }

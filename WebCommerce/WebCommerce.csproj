@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +36,19 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -194,7 +207,7 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CupomController.cs" />
-    <Compile Include="Controllers\EnderecosController.cs" />
+    <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
@@ -391,6 +404,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Promocao\Create.cshtml" />
+    <Content Include="Views\Promocao\Delete.cshtml" />
+    <Content Include="Views\Promocao\Details.cshtml" />
+    <Content Include="Views\Promocao\Edit.cshtml" />
+    <Content Include="Views\Promocao\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Delete.cshtml" />
+    <Content Include="Views\Categoria\Details.cshtml" />
+    <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Estado\Create.cshtml" />
+    <Content Include="Views\Estado\Delete.cshtml" />
+    <Content Include="Views\Estado\Details.cshtml" />
+    <Content Include="Views\Estado\Edit.cshtml" />
+    <Content Include="Views\Estado\Index.cshtml" />
+    <Content Include="Views\Endereco\Create.cshtml" />
+    <Content Include="Views\Endereco\Delete.cshtml" />
+    <Content Include="Views\Endereco\Details.cshtml" />
+    <Content Include="Views\Endereco\Edit.cshtml" />
+    <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
@@ -415,27 +448,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Categoria\Create.cshtml" />
-    <Content Include="Views\Categoria\Delete.cshtml" />
-    <Content Include="Views\Categoria\Details.cshtml" />
-    <Content Include="Views\Categoria\Edit.cshtml" />
-    <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Cupom\Create.cshtml" />
     <Content Include="Views\Cupom\Delete.cshtml" />
     <Content Include="Views\Cupom\Details.cshtml" />
     <Content Include="Views\Cupom\Edit.cshtml" />
     <Content Include="Views\Cupom\Index.cshtml" />
-    <Content Include="Views\Promocao\Create.cshtml" />
-    <Content Include="Views\Promocao\Delete.cshtml" />
-    <Content Include="Views\Promocao\Details.cshtml" />
-    <Content Include="Views\Promocao\Edit.cshtml" />
-    <Content Include="Views\Promocao\Index.cshtml" />
-    <Content Include="Views\Cliente\_CadastrarEndereco.cshtml" />
-    <Content Include="Views\Enderecos\Create.cshtml" />
-    <Content Include="Views\Enderecos\Delete.cshtml" />
-    <Content Include="Views\Enderecos\Details.cshtml" />
-    <Content Include="Views\Enderecos\Edit.cshtml" />
-    <Content Include="Views\Enderecos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

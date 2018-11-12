@@ -11,10 +11,10 @@ namespace WebCommerce.Models.FluentMaps
             ToTable("Cupons");
             HasKey(a => a.Id).Property(a => a.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             //Property(a => a.DescontoQuantidade).IsRequired().HasColumnType("float").HasColumnName("DescontoQuantidade").HasParameterName("Desconto Quantidade");
-            Property(a => a.DescontoPorcentagem).IsRequired().HasColumnType("int").HasColumnName("DescontoPorcentagem").HasParameterName("Desconto Porcentagem");
-            Property(a => a.Valido).HasColumnName("Valido").HasColumnType("boolean").HasParameterName("Válido");
-            Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade").HasParameterName("Quantidade");
-            Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao").HasParameterName("Descricao");
+            Property(a => a.DescontoPorcentagem).IsRequired().HasColumnType("int").HasColumnName("DescontoPorcentagem");
+            Property(a => a.Valido).HasColumnName("Valido").HasColumnType("boolean");
+            Property(a => a.Quantidade).IsRequired().HasColumnType("int").HasColumnName("Quantidade");
+            Property(a => a.Descricao).IsRequired().HasColumnType("Varchar").HasColumnName("Descricao");
 
 
 

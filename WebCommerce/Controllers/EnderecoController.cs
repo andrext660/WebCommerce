@@ -11,17 +11,17 @@ using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
 {
-    public class EnderecosController : Controller
+    public class EnderecoController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Enderecos
+        // GET: Endereco
         public ActionResult Index()
         {
             return View(db.Enderecoes.ToList());
         }
 
-        // GET: Enderecos/Details/5
+        // GET: Endereco/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +36,22 @@ namespace WebCommerce.Controllers
             return View(endereco);
         }
 
-        // GET: Enderecos/Create
+        // GET: Endereco/Create
         public ActionResult Create()
         {
+
+            
+
+
             return View();
         }
 
-        // POST: Enderecos/Create
+        // POST: Endereco/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CEP,Rua,Bairro,Cidade,Estado,Numero")] Endereco endereco)
+        public ActionResult Create([Bind(Include = "Id,Logradouro,Bairro,CEP,Numero,Cidade,IdEstado")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -56,10 +60,12 @@ namespace WebCommerce.Controllers
                 return RedirectToAction("Index");
             }
 
+       
+
             return View(endereco);
         }
 
-        // GET: Enderecos/Edit/5
+        // GET: Endereco/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,12 +80,12 @@ namespace WebCommerce.Controllers
             return View(endereco);
         }
 
-        // POST: Enderecos/Edit/5
+        // POST: Endereco/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CEP,Rua,Bairro,Cidade,Estado,Numero")] Endereco endereco)
+        public ActionResult Edit([Bind(Include = "Id,Logradouro,Bairro,CEP,Numero,Cidade,IdEstado")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +96,7 @@ namespace WebCommerce.Controllers
             return View(endereco);
         }
 
-        // GET: Enderecos/Delete/5
+        // GET: Endereco/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +111,7 @@ namespace WebCommerce.Controllers
             return View(endereco);
         }
 
-        // POST: Enderecos/Delete/5
+        // POST: Endereco/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
