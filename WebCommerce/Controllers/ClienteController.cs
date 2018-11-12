@@ -60,7 +60,7 @@ namespace WebCommerce.Controllers
 				cliente.Endereco.Rua = form["Rua"];
 				cliente.Endereco.Bairro = form["Bairro"];
 				cliente.Endereco.Cidade = form["Cidade"];
-				cliente.Endereco.Estado = form["Estado"];
+				cliente.Endereco.UF = form["Estado"];
 				cliente.Endereco.Numero = Convert.ToInt32(form["Numero"]);
 				
                 if (ModelState.IsValid)

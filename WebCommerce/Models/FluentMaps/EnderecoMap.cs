@@ -19,7 +19,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Rua).IsRequired().HasColumnType("Varchar").HasColumnName("Logradouro");
             Property(a => a.Bairro).IsRequired().HasColumnType("Varchar").HasColumnName("Bairro");
             Property(a => a.Cidade).IsRequired().HasColumnType("Varchar").HasColumnName("Cidade");
-            Property(a => a.Estado).IsRequired().HasColumnType("Varchar").HasColumnName("Estado");
+            Property(a => a.UF).IsRequired().HasColumnType("Varchar").HasColumnName("Estado");
 			Property(a => a.Numero).IsRequired().HasColumnType("Integer").HasColumnName("Numero");
         }
     }

@@ -419,11 +419,6 @@
     <Content Include="Views\Estado\Details.cshtml" />
     <Content Include="Views\Estado\Edit.cshtml" />
     <Content Include="Views\Estado\Index.cshtml" />
-    <Content Include="Views\Endereco\Create.cshtml" />
-    <Content Include="Views\Endereco\Delete.cshtml" />
-    <Content Include="Views\Endereco\Details.cshtml" />
-    <Content Include="Views\Endereco\Edit.cshtml" />
-    <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
@@ -453,6 +448,11 @@
     <Content Include="Views\Cupom\Details.cshtml" />
     <Content Include="Views\Cupom\Edit.cshtml" />
     <Content Include="Views\Cupom\Index.cshtml" />
+    <Content Include="Views\Endereco\Create.cshtml" />
+    <Content Include="Views\Endereco\Delete.cshtml" />
+    <Content Include="Views\Endereco\Details.cshtml" />
+    <Content Include="Views\Endereco\Edit.cshtml" />
+    <Content Include="Views\Endereco\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

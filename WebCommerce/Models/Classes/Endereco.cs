@@ -12,7 +12,7 @@ namespace WebCommerce.Models.Classes
 		public String Rua { get; set; }		
 		public String Bairro { get; set; }
 		public String Cidade { get; set; }
-		public String Estado { get; set; }
+		public String UF { get; set; }
 		public int Numero { get; set; }
 	}
 }

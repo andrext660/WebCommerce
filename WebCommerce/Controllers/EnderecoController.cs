@@ -39,10 +39,6 @@ namespace WebCommerce.Controllers
         // GET: Endereco/Create
         public ActionResult Create()
         {
-
-            
-
-
             return View();
         }
 
@@ -51,7 +47,7 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Logradouro,Bairro,CEP,Numero,Cidade,IdEstado")] Endereco endereco)
+        public ActionResult Create([Bind(Include = "Id,CEP,Rua,Bairro,Cidade,UF,Numero")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +55,6 @@ namespace WebCommerce.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-       
 
             return View(endereco);
         }
@@ -85,7 +79,7 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Logradouro,Bairro,CEP,Numero,Cidade,IdEstado")] Endereco endereco)
+        public ActionResult Edit([Bind(Include = "Id,CEP,Rua,Bairro,Cidade,UF,Numero")] Endereco endereco)
         {
             if (ModelState.IsValid)
             {
