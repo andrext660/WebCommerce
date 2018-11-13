@@ -67,7 +67,7 @@ namespace WebCommerce.Controllers
                 {
                     db.Enderecoes.Add(endereco);
                     db.SaveChanges();
-                    cliente.IdEndereco = cliente.Endereco.Id;
+                    cliente.IdEndereco = endereco.Id;
                     db.Clientes.Add(cliente);
                     db.SaveChanges();
                     return RedirectToAction("Index");
