@@ -4,8 +4,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebCommerce.Models;
 using WebCommerce.Models.Classes;
 
@@ -56,7 +58,8 @@ namespace WebCommerce.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Enderecoes.Add(endereco);
+                    //var item = db.Users.Where(usr => usr.Email.Equals(User.Identity.Name));
+                   // ApplicationUser user = item.FirstOrDefault<ApplicationUser>();
                     db.SaveChanges();
                     cliente.IdEndereco = endereco.Id;
                     db.Clientes.Add(cliente);
