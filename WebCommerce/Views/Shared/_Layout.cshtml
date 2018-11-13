@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -31,9 +32,13 @@
                         </a>
                         <ul class="nav dropdown-menu">
                             <li>@Html.ActionLink("Cliente", "Index", "Cliente")</li>
-                       
+
                             <li>@Html.ActionLink("Endereco", "Index", "Endereco")</li>
-                           
+                            <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                            <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+                            <li>@Html.ActionLink("Venda", "Index", "Venda")</li>
+                            <li>@Html.ActionLink("Promocao", "Index", "Promocao")</li>
+
 
 
                         </ul>
@@ -42,6 +47,10 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                 </ul>
+                @*<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>*@
                 @Html.Partial("_LoginPartial")
             </div>
 

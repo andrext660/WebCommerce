@@ -28,6 +28,13 @@ namespace WebCommerce.Controllers
             return View(p.ToList());
         }
 
+        //Metodo que traz a busca do auto complete jquery
+        public  JsonResult BuscarProduto(string term)
+        {
+            var resul = db.Produtoes.Where(x => x.Nome.StartsWith(term)).Select(x => x.Nome).Take(5).ToList();
+            return Json(resul, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Produto/Details/5
         public ActionResult Details(int? id)
         {
