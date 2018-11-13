@@ -52,17 +52,8 @@ namespace WebCommerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone,cep,rua,bairro,cidade,uf")] Cliente cliente, Endereco endereco)
         {
-
             try
             {
-                /*cliente.Endereco = new Endereco();
-				cliente.Endereco.CEP = form["CEP"];
-				cliente.Endereco.Rua = form["Rua"];
-				cliente.Endereco.Bairro = form["Bairro"];
-				cliente.Endereco.Cidade = form["Cidade"];
-				cliente.Endereco.UF = form["Estado"];
-				cliente.Endereco.Numero = Convert.ToInt32(form["Numero"]);*/
-				
                 if (ModelState.IsValid)
                 {
                     db.Enderecoes.Add(endereco);
