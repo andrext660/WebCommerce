@@ -45,9 +45,9 @@ namespace WebCommerce.Models.DatabaseSeed
 						cliente.IdEndereco = endereco.Id;
 						cliente.Nome = "Raffael";
 						cliente.Telefone = "991554964";
-						context.Clientes.Add(cliente);
+						contexto.Clientes.Add(cliente);
 
-						context.SaveChanges();
+						contexto.SaveChanges();
 
 
 					}

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WebCommerce.Models.DatabaseSeed;
 
 namespace WebCommerce.Models
 {
@@ -23,7 +24,7 @@ namespace WebCommerce.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            Database.SetInitializer<ApplicationDbContext>(new ClinicaDataBaseSeed());
         }
 
         public static ApplicationDbContext Create()
