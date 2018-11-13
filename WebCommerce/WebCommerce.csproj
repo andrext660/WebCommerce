@@ -229,6 +229,7 @@
     <Compile Include="Models\Classes\Produto.cs" />
     <Compile Include="Models\Classes\Promocao.cs" />
     <Compile Include="Models\Classes\Venda.cs" />
+    <Compile Include="Models\DatabaseSeed\WebCommerceDataBaseSeed.cs" />
     <Compile Include="Models\Context\DataBaseContext.cs" />
     <Compile Include="Models\FluentMaps\CategoriaMap.cs" />
     <Compile Include="Models\FluentMaps\ClienteMap.cs" />
