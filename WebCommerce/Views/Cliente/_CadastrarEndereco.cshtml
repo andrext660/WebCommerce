@@ -14,14 +14,14 @@
 
 			function limpa_formulário_cep() {
 				// Limpa valores do formulário de cep.
-				$("#rua").val("");
-				$("#bairro").val("");
-				$("#cidade").val("");
-				$("#uf").val("");
+				$("#Rua").val("");
+				$("#Bairro").val("");
+				$("#Cidade").val("");
+				$("#UF").val("");
 			}
 
 			//Quando o campo cep perde o foco.
-			$("#cep").blur(function () {
+			$("#CEP").blur(function () {
 
 				//Nova variável "cep" somente com dígitos.
 				var cep = $(this).val().replace(/\D/g, '');
@@ -36,20 +36,20 @@
 					if (validacep.test(cep)) {
 
 						//Preenche os campos com "..." enquanto consulta webservice.
-						$("#rua").val("...");
-						$("#bairro").val("...");
-						$("#cidade").val("...");
-						$("#uf").val("...");
+						$("#Rua").val("...");
+						$("#Bairro").val("...");
+						$("#Cidade").val("...");
+						$("#UF").val("...");
 
 						//Consulta o webservice viacep.com.br/
 						$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
 							if (!("erro" in dados)) {
 								//Atualiza os campos com os valores da consulta.
-								$("#rua").val(dados.logradouro);
-								$("#bairro").val(dados.bairro);
-								$("#cidade").val(dados.localidade);
-								$("#uf").val(dados.uf);
+								$("#Rua").val(dados.logradouro);
+								$("#Bairro").val(dados.bairro);
+								$("#Cidade").val(dados.localidade);
+								$("#UF").val(dados.uf);
 							} //end if.
 							else {
 								//CEP pesquisado não foi encontrado.
@@ -79,37 +79,42 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /><br />
-        </div>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+		</div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Rua, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="rua" type="text" id="rua" size="60" /><br />
-        </div>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Rua, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
+		</div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="bairro" type="text" id="bairro" size="40" /><br />
-        </div>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+		</div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="cidade" type="text" id="cidade" size="40" /><br />
-        </div>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+		</div>
     </div>
 
     <div class="form-group">
         @Html.Label("Estado", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="uf" type="text" id="uf" size="2" /><br />
-        </div>
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
+		</div>
     </div>
 
     <div class="form-group">
