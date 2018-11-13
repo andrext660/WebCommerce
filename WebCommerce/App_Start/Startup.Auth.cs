@@ -54,9 +54,9 @@ namespace WebCommerce
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2197556197185567",
+               appSecret: "9678ec8e1a6009198f05fcf7fc1761ce");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
