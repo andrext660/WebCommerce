@@ -19,8 +19,8 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.DataNascimento).IsRequired().HasColumnType("DateTime").HasColumnName("DataNasc");
             Property(a => a.CPF).HasMaxLength(11).IsRequired().HasColumnType("Varchar").HasColumnName("CPF").HasParameterName("CPF");
             Property(a => a.Telefone).HasMaxLength(11).IsRequired().HasColumnType("Varchar").HasColumnName("Telefone");
-            Property(a => a.IdEndereco).IsRequired().HasColumnName("Endereco");
-			HasRequired(a => a.Endereco).WithRequiredPrincipal();
+            //Property(a => a.IdEndereco) .IsRequired().HasColumnName("IdEndereco");
+            HasRequired(a => a.Endereco);
 			HasRequired(e => e.ListaVenda).WithMany();
 		}
     }

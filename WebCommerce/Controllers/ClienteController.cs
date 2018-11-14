@@ -20,7 +20,7 @@ namespace WebCommerce.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            return View(db.Clientes.ToList());
+            return View(db.Clientes.Include(cli=> cli.Endereco).ToList());
         }
 
         // GET: Cliente/Details/5
@@ -30,7 +30,7 @@ namespace WebCommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Clientes.Find(id);
+            Cliente cliente = db.Clientes.Include(cli => cli.Endereco).Where(cli=> cli.Id == id).FirstOrDefault();
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -61,13 +61,15 @@ namespace WebCommerce.Controllers
                     //var item = db.Users.Where(usr => usr.Email.Equals(User.Identity.Name));
                    // ApplicationUser user = item.FirstOrDefault<ApplicationUser>();
                     db.SaveChanges();
-                    cliente.IdEndereco = endereco.Id;
+                    //cliente.IdEndereco = endereco.Id;
+                    
+                    cliente.Endereco.Id = endereco.Id;
                     db.Clientes.Add(cliente);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
 
-                ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro", cliente.IdEndereco);
+                ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro", cliente.Endereco.Id);
 
             } catch
             {
@@ -83,7 +85,7 @@ namespace WebCommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Clientes.Find(id);
+            Cliente cliente = db.Clientes.Include(cli => cli.Endereco).Where(cli => cli.Id == id).FirstOrDefault();
             if (cliente == null)
             {
                 return HttpNotFound();

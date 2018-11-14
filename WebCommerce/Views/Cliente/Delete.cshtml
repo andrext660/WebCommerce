@@ -42,18 +42,14 @@
         <dd>
             @Html.DisplayFor(model => model.Telefone)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdEndereco)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.IdEndereco)
+            @Html.DisplayFor(model => model.Endereco.Id)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
