@@ -59,11 +59,12 @@ namespace WebCommerce.Controllers
                 if (ModelState.IsValid)
                 {
                     //var item = db.Users.Where(usr => usr.Email.Equals(User.Identity.Name));
-                   // ApplicationUser user = item.FirstOrDefault<ApplicationUser>();
-                    db.SaveChanges();
+                    // ApplicationUser user = item.FirstOrDefault<ApplicationUser>();
                     //cliente.IdEndereco = endereco.Id;
-                    
-                    cliente.Endereco.Id = endereco.Id;
+
+                    db.Enderecoes.Add(endereco);
+                    db.SaveChanges();
+                    cliente.Endereco = endereco;
                     db.Clientes.Add(cliente);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -73,7 +74,8 @@ namespace WebCommerce.Controllers
 
             } catch
             {
-                return View();            }
+                return View();
+            }
 
             return View(cliente);
         }
@@ -98,10 +100,11 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone,IdEndereco")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone,IdEndereco")] Cliente cliente, Endereco endereco)
         {
             if (ModelState.IsValid)
             {
+                db.Entry(endereco).State = EntityState.Modified;
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
