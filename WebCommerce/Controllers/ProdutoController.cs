@@ -11,11 +11,16 @@ using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
 {
+
+
+    
     public class ProdutoController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produto
+        //[Authorize(Roles ="View")]
+
         public ActionResult Index(string Pesquisa = "")
         {
             var p = db.Produtoes.AsQueryable();
@@ -36,6 +41,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Details/5
+       
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,6 +57,8 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Create
+        //[Authorize(Roles = "Create")]
+
         public ActionResult Create()
         {
             return View();
@@ -74,6 +82,9 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Edit/5
+
+        //[Authorize(Roles = "Edit")]
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -105,6 +116,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Delete/5
+        [Authorize(Roles = "Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
