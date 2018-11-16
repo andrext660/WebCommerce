@@ -9,12 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebCommerce.Models;
+using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -147,7 +149,7 @@ namespace WebCommerce.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Include = "Id,Nome,DataNascimento,CPF,Telefone,cep,rua,bairro,cidade,uf")] Cliente cliente, Endereco endereco, RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -156,16 +158,23 @@ namespace WebCommerce.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar um email com este link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
+                    db.Enderecoes.Add(endereco);
+                    db.SaveChanges();
+                    cliente.Endereco = endereco;
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
+
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
+               
             }
 
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
