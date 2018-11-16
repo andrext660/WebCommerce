@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WebCommerce.Models.Classes.Categoria">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <AssociationLine Name="ListaProduto" Type="WebCommerce.Models.Classes.Produto">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.141" Y="-1.107" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Classes\Categoria.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ListaProduto" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Cliente">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAAAAAAAAACAQAMAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Models\Classes\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Endereco" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ListaVenda" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Cupom">
+    <Position X="11.75" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIQBAAAAAA=</HashCode>
+      <FileName>Models\Classes\Cupom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Endereco">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAABAAAAAAAAAgACAAAAAAAAAAAAAAAABAAI=</HashCode>
+      <FileName>Models\Classes\Endereco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Produto">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <AssociationLine Name="Categoria" Type="WebCommerce.Models.Classes.Categoria" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.812" Y="4" />
+        <Point X="5.812" Y="1.97" />
+        <Point X="5" Y="1.97" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAAAAAAggAQAgAEAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Models\Classes\Produto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Categoria" />
+      <Property Name="Promocao" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Promocao">
+    <Position X="2" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIABIAAAAA=</HashCode>
+      <FileName>Models\Classes\Promocao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebCommerce.Models.Classes.Venda">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAQIAQAAAAAAAAAABAABAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\Classes\Venda.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cupom" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ListaProdutos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

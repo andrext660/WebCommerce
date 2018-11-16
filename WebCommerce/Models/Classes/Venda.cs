@@ -18,6 +18,7 @@ namespace WebCommerce.Models.Classes
         public int CodCupom { get; set; }
         public int IdCliente { get; set; }
 
+        public Cupom Cupom { get; set; }
         public virtual ICollection<Produto> ListaProdutos { get; set; }
        
 	}
