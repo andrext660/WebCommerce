@@ -153,7 +153,14 @@ namespace WebCommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                db.Enderecoes.Add(endereco);
+                db.SaveChanges();
+                cliente.Endereco = endereco;
+                db.Clientes.Add(cliente);
+                db.SaveChanges();
+                model.Cliente = cliente; 
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Cliente = model.Cliente };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -165,11 +172,6 @@ namespace WebCommerce.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
-                    db.Enderecoes.Add(endereco);
-                    db.SaveChanges();
-                    cliente.Endereco = endereco;
-                    db.Clientes.Add(cliente);
-                    db.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
                 }

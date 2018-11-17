@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Models
 {
@@ -79,6 +80,8 @@ namespace WebCommerce.Models
         [Display(Name = "Confirmar Senha")]
         [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
         public string ConfirmPassword { get; set; }
+
+        public Cliente Cliente { get; set; }
     }
 
     public class ResetPasswordViewModel

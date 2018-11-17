@@ -226,6 +226,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811162307227_InitialCreate.cs" />
+    <Compile Include="Migrations\201811162307227_InitialCreate.Designer.cs">
+      <DependentUpon>201811162307227_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811172043392_Cliente.cs" />
+    <Compile Include="Migrations\201811172043392_Cliente.Designer.cs">
+      <DependentUpon>201811172043392_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Autenticacao\AccountViewModels.cs" />
     <Compile Include="Models\Autenticacao\IdentityModels.cs" />
     <Compile Include="Models\Autenticacao\ManageViewModels.cs" />
@@ -528,6 +537,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811162307227_InitialCreate.resx">
+      <DependentUpon>201811162307227_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172043392_Cliente.resx">
+      <DependentUpon>201811172043392_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
