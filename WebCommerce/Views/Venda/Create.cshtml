@@ -44,9 +44,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CodCupom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodCupom, "", new { @class = "text-danger" })
+                @Html.TextBox("Cupom")
             </div>
+            <span id="msg" style="color:red;" />
         </div>
 
         <div class="form-group">
@@ -63,4 +63,22 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+        <script>
+            $("#Cupom").blur(function () {
+                $.ajax(
+                    {
+                        type: 'GET',
+                        url: '/Venda/ValidarCupom',
+                        data: { Cupom: $('#Cupom').val() },
+                        dataType: 'html',
+                        cache: false,
+                        async: true,
+                        success: function (data) {
+                            $("#msg").html(data);
+                        }
+                });
+            })
+
+        </script>
 }
