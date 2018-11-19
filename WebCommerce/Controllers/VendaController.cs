@@ -21,7 +21,7 @@ namespace WebCommerce.Controllers
             return View(db.Vendas.ToList());
         }
 
-        public  String ValidarCupom(int Cupom)
+        public  Boolean ValidarCupom(int Cupom)
         {
             if (Request.IsAjaxRequest())
             {
@@ -29,11 +29,11 @@ namespace WebCommerce.Controllers
 
                 if (result != null)
                 {
-                    return "Cupom Válido.";
+                    return true;
                 }
             }
                 
-             return "Cupom Inválido";
+             return false;
         }
 
         // GET: Venda/Details/5
