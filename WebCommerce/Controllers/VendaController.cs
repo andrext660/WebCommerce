@@ -86,7 +86,9 @@ namespace WebCommerce.Controllers
             {
                 return HttpNotFound();
             }
-            return View(venda);
+			//ViewBag.Produtos = db.Vendas.Include(m => m.ListaProdutos).Where(a => a.Id == id).ToList();
+			
+			return View(venda);
         }
 
         // POST: Venda/Edit/5
@@ -94,11 +96,22 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Data,ValorTotal,Pago,CodCupom")] Venda venda)
+        public ActionResult Edit([Bind(Include = "Id,Data,ValorTotal,Pago,CodCupom")] Venda venda/*, FormCollection form*/)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(venda).State = EntityState.Modified;
+				//String[] nome = form.GetValues("item.Nome");
+				//String[] preco = form.GetValues("item.Preco");
+				//String[] qtdEscolhida = form.GetValues("item.QuantidadeEscolhida");
+
+				//for (int i = 0; i < venda.ListaProdutos.Count(); i++)
+				//{
+				//	if (Convert.ToInt32(qtdEscolhida[i]) != 0)
+				//	{
+				//		db.Vendas.Find(venda.Id).ListaProdutos.ElementAt(i).QuantidadeSelecionada = Convert.ToInt32(qtdEscolhida[i]);
+				//	}
+				//}
+				db.Entry(venda).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
