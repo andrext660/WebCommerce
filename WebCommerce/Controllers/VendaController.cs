@@ -86,7 +86,7 @@ namespace WebCommerce.Controllers
             {
                 return HttpNotFound();
             }
-			//ViewBag.Produtos = db.Vendas.Include(m => m.ListaProdutos).Where(a => a.Id == id).ToList();
+			ViewBag.Produtos = db.Vendas.Include(m => m.ListaProdutos).Where(a => a.Id == id).ToList();
 			
 			return View(venda);
         }
