@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebCommerce.Models;
+using WebCommerce.Models.Autenticacao;
 using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
@@ -64,7 +65,7 @@ namespace WebCommerce.Controllers
 		}
 
         // GET: Produto/Create
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin")]
 
         public ActionResult Create()
         {
@@ -90,7 +91,7 @@ namespace WebCommerce.Controllers
 
         // GET: Produto/Edit/5
 
-        [Authorize(Roles = "Edit")]
+        [Authorize(Roles = "Admin")]
 
         public ActionResult Edit(int? id)
         {
@@ -123,7 +124,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Delete/5
-        [Authorize(Roles = "Delete")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

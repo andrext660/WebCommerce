@@ -427,6 +427,12 @@ namespace WebCommerce.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult AccessDenied()
+        {
+            return View(@"~\Views\Account\AccessDenied.cshtml");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

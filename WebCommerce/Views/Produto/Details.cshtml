@@ -67,8 +67,8 @@
 	</dl>
 </div>
 <p>
-	@{ if (User.Identity.Name.Equals("teste@unit.com.br"))
-		{
+	@{ if (User.IsInRole("Admin"))
+        {
 			@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
 		}
 
