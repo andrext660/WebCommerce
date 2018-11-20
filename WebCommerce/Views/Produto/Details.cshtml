@@ -1,72 +1,99 @@
 ﻿@model WebCommerce.Models.Classes.Produto
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Produto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+	<h4>Produto</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			<button type="button" id="Comprar">Comprar</button>
+		</dt>
+		<dt>
+			@Html.HiddenFor(model => model.Id)
+		</dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Nome)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Preco)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Preco)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantidadeDisponivel)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.QuantidadeDisponivel)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuantidadeDisponivel)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.QuantidadeDisponivel)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Detalhes)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Detalhes)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Detalhes)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Detalhes)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCategoria)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Categoria)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdCategoria)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Categoria.Nome)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdPromocao)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Promocao)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdPromocao)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Promocao.DescontoPorcentagem)
+		</dd>
 
-    </dl>
+	</dl>
 </div>
 <p>
-    @{ if (User.Identity.Name.Equals("teste@unit.com.br"))
-        {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-        }
+	@{ if (User.Identity.Name.Equals("teste@unit.com.br"))
+		{
+			@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+		}
 
-    }
-    |
-    @Html.ActionLink("Back to List", "Index")
+	}
+	|
+	@Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+
+	<script>
+		$(Comprar).click(function () {
+			$.ajax(
+				{
+					type: 'GET',
+					url: '/Produto/adicionarProdutoCarrinho',
+					data: { idProduto: $('#model.id').val(), idVenda: $('#').val() },
+					dataType: 'html',
+					cache: false,
+					async: true,
+					sucess: null
+				}
+			)
+		})
+	</script>
+
+}
