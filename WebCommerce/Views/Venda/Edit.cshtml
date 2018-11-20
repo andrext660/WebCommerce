@@ -15,41 +15,33 @@
 	<h4>Venda</h4>
 	<hr />
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-	@Html.HiddenFor(model => model.Id)
+	@Html.Hidden("IdVenda", Model.Id)
 
 	@*<div class="form-group">
-		@Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.ValorTotal, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(model => model.Pago, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			<div class="checkbox">
-				@Html.EditorFor(model => model.Pago)
-				@Html.ValidationMessageFor(model => model.Pago, "", new { @class = "text-danger" })
+			@Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
 			</div>
 		</div>
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.CodCupom, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.CodCupom, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Pago, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<div class="checkbox">
+					@Html.EditorFor(model => model.Pago)
+					@Html.ValidationMessageFor(model => model.Pago, "", new { @class = "text-danger" })
+				</div>
+			</div>
 		</div>
-	</div>*@
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CodCupom, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CodCupom, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CodCupom, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
 
 	<table class="table">
 		<tr>
@@ -61,6 +53,7 @@
 		@foreach (WebCommerce.Models.Classes.Produto item in ViewBag.Produtos)
 		{
 		<tr>
+			<td class="col-md-2"> @Html.Hidden("IdProduto", item.Id  )</td>
 			<td class="col-md-2"> @Html.DisplayFor(modelItem => item.Nome)</td>
 			<td class="col-md-2"> @Html.DisplayFor(modelItem => item.Preco)</td>
 			<td class="col-md-2">@Html.Editor("QuantidadeEscolhida")</td>
@@ -68,6 +61,13 @@
 		}
 
 	</table>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DisplayFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
 
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-10">
@@ -83,4 +83,26 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+	<script>
+		$(#QuantidadeEscolhida).blur(function () {
+			$.ajax(
+				{
+					type: 'GET',
+					url: '/Venda/atualizarQuantidade',
+					data: { quantidade: $('#QuantidadeEscolhida').val(), produtoId: $('#IdProduto').val(), vendaId: $('IdVenda').val() },
+					dataType: 'html',
+					cache: false,
+					async: true,
+					sucess: function (data) { $("#ValorTotal").html(data) }
+
+				}
+			)
+
+		})
+	</script>
+
 }
+
+
+

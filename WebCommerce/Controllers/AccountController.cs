@@ -153,12 +153,16 @@ namespace WebCommerce.Controllers
         {
             if (ModelState.IsValid)
             {
+				Venda venda = new Venda();
                 db.Enderecoes.Add(endereco);
                 db.SaveChanges();
                 cliente.Endereco = endereco;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
-                model.Cliente = cliente; 
+				venda.IdCliente = cliente.Id;
+				db.Vendas.Add(venda);
+				db.SaveChanges();
+				model.Cliente = cliente; 
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Cliente = model.Cliente };
                 var result = await UserManager.CreateAsync(user, model.Password);

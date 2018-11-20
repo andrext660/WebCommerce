@@ -58,16 +58,17 @@ namespace WebCommerce.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    //var item = db.Users.Where(usr => usr.Email.Equals(User.Identity.Name));
-                    // ApplicationUser user = item.FirstOrDefault<ApplicationUser>();
-                    //cliente.IdEndereco = endereco.Id;
-
-                    db.Enderecoes.Add(endereco);
+					Venda venda = new Venda();
+					
+					db.Enderecoes.Add(endereco);
                     db.SaveChanges();
                     cliente.Endereco = endereco;
                     db.Clientes.Add(cliente);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+					venda.IdCliente = cliente.Id;
+					db.Vendas.Add(venda);
+					db.SaveChanges();
+					return RedirectToAction("Index");
                 }
 
                 ViewBag.IdEndereco = new SelectList(db.Enderecoes, "Id", "Logradouro", cliente.Endereco.Id);

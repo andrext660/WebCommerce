@@ -9,8 +9,12 @@ namespace WebCommerce.Models.Classes
 	{
         public Venda()
         {
-            ListaProdutos = new List<Produto>();
-        }
+			this.ListaProdutos = new Dictionary<Produto, int>();
+			this.Data = DateTime.Now;
+			this.Pago = false;
+			this.ValorTotal = 0;
+			this.CodCupom = 0;
+		}
 		public int Id { get; set; }
 		public DateTime Data { get; set; }
 		public float ValorTotal { get; set; }
@@ -19,7 +23,12 @@ namespace WebCommerce.Models.Classes
         public int IdCliente { get; set; }
 
         public Cupom Cupom { get; set; }
-        public virtual ICollection<Produto> ListaProdutos { get; set; }
+        public virtual IDictionary<Produto, int> ListaProdutos { get; set; }
+
+		public void atualizarQuantidade(int quantidade, Produto produto)
+		{
+			this.ListaProdutos[produto] = quantidade;
+		}
        
 	}
 }

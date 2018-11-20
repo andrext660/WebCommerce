@@ -96,21 +96,10 @@ namespace WebCommerce.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Data,ValorTotal,Pago,CodCupom")] Venda venda/*, FormCollection form*/)
+        public ActionResult Edit([Bind(Include = "Id,Data,ValorTotal,Pago,CodCupom")] Venda venda)
         {
             if (ModelState.IsValid)
             {
-				//String[] nome = form.GetValues("item.Nome");
-				//String[] preco = form.GetValues("item.Preco");
-				//String[] qtdEscolhida = form.GetValues("item.QuantidadeEscolhida");
-
-				//for (int i = 0; i < venda.ListaProdutos.Count(); i++)
-				//{
-				//	if (Convert.ToInt32(qtdEscolhida[i]) != 0)
-				//	{
-				//		db.Vendas.Find(venda.Id).ListaProdutos.ElementAt(i).QuantidadeSelecionada = Convert.ToInt32(qtdEscolhida[i]);
-				//	}
-				//}
 				db.Entry(venda).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -118,8 +107,29 @@ namespace WebCommerce.Controllers
             return View(venda);
         }
 
-        // GET: Venda/Delete/5
-        public ActionResult Delete(int? id)
+		public float atualizarNumero(int quantidade, int produtoId, int vendaId)
+		{
+			Produto produto = db.Produtoes.Find(produtoId);
+			db.Vendas.Find(vendaId).atualizarQuantidade(quantidade, produto);
+			
+			float total = 0;
+
+			List<Produto> produtos = db.Produtoes.Where(p => p.listaVendas.Contains(db.Vendas.Find(vendaId))).ToList();
+			
+			for(int i = 0; i < produtos.Count(); i++)
+			{
+				if(produtos.ElementAt(i).Promocao != null)
+				{
+					total += (produtos.ElementAt(i).Preco * (1 - produtos.ElementAt(i).Promocao.DescontoPorcentagem/100));
+				}
+				total += produtos.ElementAt(i).Preco;
+			}
+			
+			return total;
+		}	   		 
+
+		// GET: Venda/Delete/5
+		public ActionResult Delete(int? id)
         {
             if (id == null)
             {
