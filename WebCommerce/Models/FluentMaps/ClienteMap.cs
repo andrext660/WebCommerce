@@ -21,7 +21,7 @@ namespace WebCommerce.Models.FluentMaps
             Property(a => a.Telefone).HasMaxLength(11).IsRequired().HasColumnType("Varchar").HasColumnName("Telefone");
             //Property(a => a.IdEndereco) .IsRequired().HasColumnName("IdEndereco");
             HasRequired(a => a.Endereco);
-			HasRequired(e => e.ListaVenda).WithMany();
+			HasRequired(e => e.HistoricoVenda).WithMany();
 		}
     }
 }

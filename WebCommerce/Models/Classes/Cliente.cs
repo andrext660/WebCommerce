@@ -17,12 +17,12 @@ namespace WebCommerce.Models.Classes
 		//public int? IdEndereco { get; set; }
 		public Endereco Endereco { get; set; }
 
-        public virtual ICollection<Venda> ListaVenda { get; set; }
+        public virtual ICollection<Venda> HistoricoVenda { get; set; }
         public virtual ICollection<Cupom> ListaCupom { get; set; }
 
         public Cliente()
         {
-            this.ListaVenda = new List<Venda>();
+            this.HistoricoVenda = new List<Venda>();
             this.ListaCupom = new List<Cupom>();
         }
     }
