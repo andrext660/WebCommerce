@@ -70,6 +70,9 @@ namespace WebCommerce.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Display(Name="Nome")]
+        public string Name { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "O/A {0} deve ter no mínimo {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]

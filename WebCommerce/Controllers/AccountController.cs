@@ -20,8 +20,12 @@ namespace WebCommerce.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        //Instaciar o DbContext
+        ApplicationDbContext context;
+
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -141,6 +145,7 @@ namespace WebCommerce.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -164,6 +169,10 @@ namespace WebCommerce.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Atribui o Peril ao usuário
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
+                    //
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771

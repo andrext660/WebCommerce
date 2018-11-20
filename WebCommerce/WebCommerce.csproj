@@ -222,6 +222,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\PromocaoController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -523,6 +524,8 @@
     <Content Include="Views\Account\_CadastrarEndereco.cshtml" />
     <Content Include="Views\Account\_CadastrarCliente.cshtml" />
     <Content Include="Views\Cliente\_CadastrarEndereco.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
