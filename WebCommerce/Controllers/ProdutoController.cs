@@ -57,7 +57,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Create
-        //[Authorize(Roles = "Create")]
+       // [Authorize(Roles = "Create")]
 
         public ActionResult Create()
         {
@@ -83,7 +83,7 @@ namespace WebCommerce.Controllers
 
         // GET: Produto/Edit/5
 
-        //[Authorize(Roles = "Edit")]
+        [Authorize(Roles = "Edit")]
 
         public ActionResult Edit(int? id)
         {

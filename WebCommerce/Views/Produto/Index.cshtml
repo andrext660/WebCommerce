@@ -7,7 +7,12 @@
 <h2>Index</h2>
 
 <p>
+    @*@if (User.IsInRole("Create"))*@
+    {
+
     @Html.ActionLink("Create New", "Create")
+    }
+
 </p>
 
 <p>@DateTime.Now</p>
