@@ -57,10 +57,11 @@ namespace WebCommerce.Controllers
             return View(produto);
         }
 
-		public void adicionarProdutoCarrinho(int idProduto, int idVenda)
+		public void adicionarProdutoCarrinho(int idProduto, String email)
 		{
-			db.Vendas.Find(idVenda).ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
-			//db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Find(idVenda));
+			int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
+			db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
+			db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
 		}
 
         // GET: Produto/Create

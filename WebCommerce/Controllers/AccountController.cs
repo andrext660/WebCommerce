@@ -160,10 +160,10 @@ namespace WebCommerce.Controllers
             {
 				Venda venda = new Venda();
                 db.Enderecoes.Add(endereco);
-                db.SaveChanges();
+               // db.SaveChanges();
                 cliente.Endereco = endereco;
                 db.Clientes.Add(cliente);
-                db.SaveChanges();
+               // db.SaveChanges();
 				venda.IdCliente = cliente.Id;
 				db.Vendas.Add(venda);
 				db.SaveChanges();
