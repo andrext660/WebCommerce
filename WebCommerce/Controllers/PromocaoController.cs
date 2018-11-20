@@ -16,12 +16,16 @@ namespace WebCommerce.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Promocao
+        //Autorização de visualização para usuario "Administrador"
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Promocaos.ToList());
         }
 
         // GET: Promocao/Details/5
+        //Autorização de visualização para usuario "Administrador"
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +41,8 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Promocao/Create
+        //Autorização de visualização para usuario "Administrador"
+        [Authorize (Roles= "Admin")]
         public ActionResult Create()
         {
             return View();
