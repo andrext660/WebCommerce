@@ -56,6 +56,12 @@ namespace WebCommerce.Controllers
             return View(produto);
         }
 
+		public void adicionarProdutoCarrinho(int idProduto, int idVenda)
+		{
+			db.Vendas.Find(idVenda).ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
+			//db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Find(idVenda));
+		}
+
         // GET: Produto/Create
         [Authorize(Roles = "Admin")]
 

@@ -86,7 +86,7 @@ namespace WebCommerce.Controllers
             {
                 return HttpNotFound();
             }
-			ViewBag.Produtos = db.Vendas.Include(m => m.ListaProdutos).Where(a => a.Id == id).ToList();
+			ViewBag.Produtos = db.Vendas.Where(a => a.Id == id).FirstOrDefault().ListaProdutos.ToList();
 			
 			return View(venda);
         }
@@ -114,7 +114,7 @@ namespace WebCommerce.Controllers
 			
 			float total = 0;
 
-			List<Produto> produtos = db.Produtoes.Where(p => p.listaVendas.Contains(db.Vendas.Find(vendaId))).ToList();
+			List<Produto> produtos = db.Produtoes.Where(p => p.ListaVendas.Contains(db.Vendas.Find(vendaId))).ToList();
 			
 			for(int i = 0; i < produtos.Count(); i++)
 			{

@@ -9,7 +9,7 @@ namespace WebCommerce.Models.Classes
 	{
 		public Produto()
 		{
-			this.listaVendas = new List<Venda>();
+			this.ListaVendas = new List<Venda>();
 		}
 
 		public int Id { get; set; }
@@ -22,6 +22,6 @@ namespace WebCommerce.Models.Classes
 		public int? IdPromocao { get; set; }
 		public Promocao Promocao { get; set; }
 
-		public IEnumerable<Venda> listaVendas{ get; set; }
+		public IEnumerable<Venda> ListaVendas{ get; set; }
 	}
 }
