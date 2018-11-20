@@ -26,6 +26,10 @@ namespace WebCommerce
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+
+
+
+
         private void AddPermissaoSuperUser(ApplicationDbContext db)
         {
 
@@ -33,35 +37,16 @@ namespace WebCommerce
             var user = userManager.FindByName("teste@unit.com.br");
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-            if (!userManager.IsInRole(user.Id, "View"))
+
+            if (!userManager.IsInRole(user.Id, "Admin"))
             {
-                userManager.AddToRole(user.Id, "View");
-            }
-
-
-
-            if (!userManager.IsInRole(user.Id, "Create"))
-            {
-                userManager.AddToRole(user.Id, "Create");
-            }
-
-
-            if (!userManager.IsInRole(user.Id, "Edit"))
-            {
-                userManager.AddToRole(user.Id, "Edit");
-            }
-
-
-            if (!userManager.IsInRole(user.Id, "Delete"))
-            {
-                userManager.AddToRole(user.Id, "Delete");
+                userManager.AddToRole(user.Id, "Admin");
             }
 
         }
 
         private void CreateSuperUser(ApplicationDbContext db)
         {
-
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
  
             //Conta do Super Usuário
@@ -82,33 +67,24 @@ namespace WebCommerce
           
         }
 
-
         //Criar as Funções
         private void CreateRoles(ApplicationDbContext db)
         {
 
             //Conexão que serve para gerar os métodos de criação/edicao/
+            //Roles Padrão do Sistema, se quiser adicionar mais algum tipo de permissão é so seguir o modelo abaixo e especificar o "nome" da Role.
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
 
-            if (!roleManager.RoleExists("Create"))
+            if (!roleManager.RoleExists("Admin"))
             {
-                roleManager.Create(new IdentityRole("Create"));
+                roleManager.Create(new IdentityRole("Admin"));
             }
 
-            if (!roleManager.RoleExists("Edit"))
+            
+            if (!roleManager.RoleExists("Usuario"))
             {
-                roleManager.Create(new IdentityRole("Edit"));
-            }
-
-            if (!roleManager.RoleExists("Delete"))
-            {
-                roleManager.Create(new IdentityRole("Delete"));
-            }
-
-            if (!roleManager.RoleExists("View"))
-            {
-                roleManager.Create(new IdentityRole("View"));
+                roleManager.Create(new IdentityRole("Usuario"));
             }
 
         }
