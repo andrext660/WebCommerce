@@ -34,7 +34,7 @@ namespace WebCommerce
         {
 
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            var user = userManager.FindByName("teste@unit.com.br");
+            var user = userManager.FindByName("admin@unit.br");
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
 
@@ -50,7 +50,7 @@ namespace WebCommerce
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
  
             //Conta do Super Usuário
-            var user = userManager.FindByName("teste@unit.com.br");
+            var user = userManager.FindByName("admin@unit.br");
 
             if (user == null)
             {
@@ -58,11 +58,11 @@ namespace WebCommerce
                 {
 
                     //Usuário Master
-                    UserName = "teste@unit.com.br",
-                    Email = "teste@unit.com.br"
+                    UserName = "admin@unit.br",
+                    Email = "admin@unit.br"
                 };
 
-                userManager.Create(user, "@Unit1234");
+                userManager.Create(user, "123456");
             }
           
         }

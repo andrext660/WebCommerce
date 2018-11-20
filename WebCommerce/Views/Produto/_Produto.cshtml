@@ -50,7 +50,7 @@
                 <td>
 
                     @{
-                        if (User.IsInRole("Create") | User.IsInRole("Edit"))
+                        @*if (User.IsInRole("Admin") | User.IsInRole("Edit"))*@
 
                         { @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                         <text> | </text>

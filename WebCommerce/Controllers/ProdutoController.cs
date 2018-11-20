@@ -57,7 +57,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Create
-       // [Authorize(Roles = "Create")]
+        [Authorize(Roles = "Admin")]
 
         public ActionResult Create()
         {
