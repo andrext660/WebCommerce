@@ -96,7 +96,7 @@ namespace WebCommerce.Controllers
 
         // GET: Produto/Edit/5
 
-        [CustomAuthorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
 
         public ActionResult Edit(int? id)
         {
@@ -129,7 +129,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Delete/5
-        [CustomAuthorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
