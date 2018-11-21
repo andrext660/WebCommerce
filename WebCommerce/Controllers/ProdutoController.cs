@@ -42,19 +42,23 @@ namespace WebCommerce.Controllers
 
         // GET: Produto/Details/5
        
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? idCategoria, int? idPromocao)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
+            //Produto produto = db.Produtoes.Find(id);
+            var produto = from m in db.Produtoes.Include(c => c.Categoria).Include(c => c.Promocao)
+                         where m.Id == id &&
+                               m.IdCategoria == idCategoria &&
+                               m.IdPromocao == idPromocao
+                          select m;
             if (produto == null)
             {
                 return HttpNotFound();
             }
-
-            return View(produto);
+            return View(produto.ToList());
         }
 
 		public void adicionarProdutoCarrinho(int idProduto, int idVenda)
