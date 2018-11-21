@@ -20,10 +20,10 @@ namespace WebCommerce.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "Bem-Vindo, o seu acesso esta liberado...";
             return View();
         }
     }
