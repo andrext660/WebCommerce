@@ -253,6 +253,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Autenticacao\AccountViewModels.cs" />
+    <Compile Include="Models\Autenticacao\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\Autenticacao\IdentityModels.cs" />
     <Compile Include="Models\Autenticacao\ManageViewModels.cs" />
     <Compile Include="Models\Classes\Categoria.cs" />
@@ -543,6 +544,8 @@
     <Content Include="Views\Cliente\_CadastrarEndereco.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,12 +9,11 @@
 <div>
 	<h4>Produto</h4>
 	<hr />
+	<button type="button" id="Comprar">Comprar</button>
+	@Html.Hidden("email", User.Identity.Name)
 	<dl class="dl-horizontal">
 		<dt>
-			<button type="button" id="Comprar">Comprar</button>
-		</dt>
-		<dt>
-			@Html.HiddenFor(model => model.Id)
+			@Html.Hidden("IdProduto", Model.Id)
 		</dt>
 		<dt>
 			@Html.DisplayNameFor(model => model.Nome)
@@ -67,8 +66,8 @@
 	</dl>
 </div>
 <p>
-	@{ if (User.Identity.Name.Equals("teste@unit.com.br"))
-		{
+	@{ if (User.IsInRole("Admin"))
+        {
 			@Html.ActionLink("Edit", "Edit", new { id = Model.Id })
 		}
 
@@ -86,7 +85,7 @@
 				{
 					type: 'GET',
 					url: '/Produto/adicionarProdutoCarrinho',
-					data: { idProduto: $('#model.id').val(), idVenda: $('#').val() },
+					data: { idProduto: $('#IdProduto').val(), email: $('#email').val() },
 					dataType: 'html',
 					cache: false,
 					async: true,

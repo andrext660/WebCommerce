@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebCommerce.Models;
+using WebCommerce.Models.Autenticacao;
 using WebCommerce.Models.Classes;
 
 namespace WebCommerce.Controllers
@@ -61,14 +62,15 @@ namespace WebCommerce.Controllers
             return View(produto.ToList());
         }
 
-		public void adicionarProdutoCarrinho(int idProduto, int idVenda)
+		public void adicionarProdutoCarrinho(int idProduto, String email)
 		{
-			db.Vendas.Find(idVenda).ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
-			//db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Find(idVenda));
+			int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
+			db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
+			db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
 		}
 
         // GET: Produto/Create
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin")]
 
         public ActionResult Create()
         {
@@ -94,7 +96,7 @@ namespace WebCommerce.Controllers
 
         // GET: Produto/Edit/5
 
-        [Authorize(Roles = "Edit")]
+        [Authorize(Roles = "Admin")]
 
         public ActionResult Edit(int? id)
         {
@@ -127,7 +129,7 @@ namespace WebCommerce.Controllers
         }
 
         // GET: Produto/Delete/5
-        [Authorize(Roles = "Delete")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

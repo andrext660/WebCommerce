@@ -22,6 +22,6 @@ namespace WebCommerce.Models.Classes
 		public int? IdPromocao { get; set; }
 		public Promocao Promocao { get; set; }
 
-		public IEnumerable<Venda> ListaVendas{ get; set; }
+		public ICollection<Venda> ListaVendas{ get; set; }
 	}
 }

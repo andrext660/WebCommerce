@@ -31,14 +31,27 @@
     </div>
 
 
-    <!--Selecione o Tipo de Perfil para o usuário-->
-    <div class="form-group">
-        @Html.Label("Selecione o Tipo de Perfil do Usuário", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownList("Name")
+        if (User.Identity.IsAuthenticated)
+    {
+        <!--Selecione o Tipo de Perfil para o usuário-->
+        <div class="form-group">
+            @Html.Label("Selecione o Tipo de Perfil do Usuário", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("Name")
+            </div>
+        </div>}
+
+    @*else
+    {
+
+        <div class="form-group">
+            @Html.Label("Selecione o Tipo de Perfil do Usuário", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("Name");
+            </div>
         </div>
-    </div>
-    <!--termina aqui-->
+
+    }*@
 
 
 @Html.Partial("_CadastrarCliente")
