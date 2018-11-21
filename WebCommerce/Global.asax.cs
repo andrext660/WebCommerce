@@ -82,9 +82,9 @@ namespace WebCommerce
             }
 
             
-            if (!roleManager.RoleExists("Usuario"))
+            if (!roleManager.RoleExists("1-Usuario"))
             {
-                roleManager.Create(new IdentityRole("Usuario"));
+                roleManager.Create(new IdentityRole("1-Usuario"));
             }
 
         }
