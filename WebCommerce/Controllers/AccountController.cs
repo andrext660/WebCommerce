@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebCommerce.Models;
 using WebCommerce.Models.Classes;
+using WebCommerce.Servicos;
 
 namespace WebCommerce.Controllers
 {
@@ -77,6 +78,17 @@ namespace WebCommerce.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            // Requeira que o usuário tenha confirmado o email antes de logar
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    ViewBag.errorMessage = "Você tem que confirmar o email antes de fazer o login.";
+                    return View("Error");
+                }
             }
 
             // Isso não conta falhas de login em relação ao bloqueio de conta
@@ -160,10 +172,10 @@ namespace WebCommerce.Controllers
             {
 				Venda venda = new Venda();
                 db.Enderecoes.Add(endereco);
-               // db.SaveChanges();
+                db.SaveChanges();
                 cliente.Endereco = endereco;
                 db.Clientes.Add(cliente);
-               // db.SaveChanges();
+                db.SaveChanges();
 				venda.IdCliente = cliente.Id;
 				db.Vendas.Add(venda);
 				db.SaveChanges();
@@ -177,16 +189,18 @@ namespace WebCommerce.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
                     //
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar um email com este link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
+                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                     await ServicoEmail.EnviaEmailAsync(model.Email, "Confirmar sua conta do WebCommerce", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
+                    ViewBag.Message = "Verifique o seu email e confirme a sua conta, você tem que confirmar a sua conta antes de fazer o login ";
+                    return View("Info");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
                
