@@ -1,49 +1,94 @@
 ﻿@model IEnumerable<WebCommerce.Models.Classes.Produto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produtos";
 }
 
-<h2>Index</h2>
-
-<p>
-    @if (User.IsInRole("Admin"))
-    {
-    @Html.ActionLink("Create New", "Create")
-    }
-
-</p>
-
-<p>@DateTime.Now</p>
-
-<p>
-    Pesquisar por nome:
-    @using (Ajax.BeginForm("Index", "Produto", new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ListProduto" }))
-    {
-        @Html.TextBox("Pesquisa")
-        <input type="submit" value="Pesquisar" />
-    }
-
-     
-
-</p>
-
-@Html.Partial("_Produto", Model)
+<h2></h2>
 
 
-@section Scripts{
-    @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<div class="row">
+    @*Formulario para pesquisar Produtos por nome*@
+    <div class="col-md-3">
+        Filtrar:
+        @using (Ajax.BeginForm("Index", "Produto", new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ListProduto" }))
+        {
+            @*a tag onfocus serve p quando o campo for clicado ele apagar todo o texto escrito nele*@
+            <br />
+            <input type="text" placeholder="Buscar por Produto" id="Pesquisa" onfocus="this.value='';" class="form-control" name="prod">
+            <br />
+            @*ver como passar o valor do dropdownlist para o metodo index*@
+            @Html.DropDownList("Categorias", null, "Selecione uma Categoria", htmlAttributes: new { @class = "form-control", @placeholder = "Buscar por Categoria", @id = "PesquisaCat", @name = "cat" });
+            @*<input type="text" placeholder="Buscar por Categoria" id="Pesquisaa" onfocus="this.value='';" class="form-control" name="cat">*@
+                <br />
+                <input type="submit" value="Pesquisar" class="btn btn-primary" />
+            }
+        </div>
     
+        <div class="col-md-3">
+            <p>@DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year</p>
+            <div id="relogio">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Cadastar Produto", "Create")
+            }
+
+        </div>
+
+    </div>
+
+    <hr />
+    <div class="row">
+        @Html.Partial("_Produto", Model)
+    </div>
 
 
-    <script>
-        $(function () {
-            $("#Pesquisa").autocomplete({
-                source: "/Produto/BuscarProduto"
+
+
+
+
+
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+
+
+        <script>
+            //script para auto completar as buscas na barra de pesquisa
+            $(function () {
+                $("#Pesquisa").autocomplete({
+                    source: "/Produto/BuscarProduto"
+                });
             });
-        });
 
-    </script>
-}
+        </script>
+
+        <script type="text/javascript">
+            //script para mostrar um relogio
+            function relogio() {
+                var data = new Date();
+                var horas = data.getHours();
+                var minutos = data.getMinutes();
+                var segundos = data.getSeconds();
+
+                if (horas < 10) {
+                    horas = "0" + horas;
+                }
+                if (minutos < 10) {
+                    segundos = "0" + minutos;
+                }
+                if (segundos < 10) {
+                    segundos = "0" + segundos;
+                }
+
+                document.getElementById("relogio").innerHTML = horas + ":" + minutos + ":" + segundos;
+            }
+            window.setInterval("relogio()", 1000);
+        </script>
+    }
 

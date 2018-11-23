@@ -22,15 +22,16 @@ namespace WebCommerce.Controllers
         // GET: Produto
         //[Authorize(Roles ="View")]
 
-        public ActionResult Index(string Pesquisa = "")
+        public ActionResult Index(string prod = "", string cat = "")
         {
-            var p = db.Produtoes.AsQueryable();
-            if (!string.IsNullOrEmpty(Pesquisa))
-                p = p.Where(c => c.Nome.Contains(Pesquisa));
+            var p = db.Produtoes.AsQueryable().Include(c => c.Categoria).Include(c => c.Promocao);
+            if (!string.IsNullOrEmpty(prod) || !string.IsNullOrEmpty(cat))
+                p = p.Where(c => c.Nome.Contains(prod) || c.Categoria.Nome.Contains(cat));
             p = p.OrderBy(c => c.Nome);
 
             if (Request.IsAjaxRequest())
                 return PartialView("_Produto", p.ToList());
+            ViewBag.Categorias = new SelectList(db.Categorias, "Id", "Nome");
             return View(p.ToList());
         }
 
