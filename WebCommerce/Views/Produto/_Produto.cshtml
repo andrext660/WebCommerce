@@ -2,7 +2,6 @@
 
 <div id="ListProduto">
 
-
     <div class="row">
         @Html.Hidden("email", User.Identity.Name)
         @foreach (var item in Model)
@@ -12,7 +11,7 @@
             @*<img src="img/noticia-thumb.jpg" alt="noticia">*@
             <h3>@Html.DisplayFor(modelItem => item.Nome)</h3>
             <h4>@Html.DisplayFor(modelItem => item.Categoria.Nome)</h4>
-            <h4>@Html.DisplayFor(modelItem => item.Preco)</h4>
+            <h4>R$@Html.DisplayFor(modelItem => item.Preco)</h4>
             <p>@Html.ActionLink("Detalhe do Produto", "Details", new { id = item.Id, idCcategoria = item.IdCategoria, idPromocao = item.IdPromocao })</p>
             <button type="button" id="Comprar" class="btn btn-success">Comprar</button>
             @if (User.IsInRole("Admin"))

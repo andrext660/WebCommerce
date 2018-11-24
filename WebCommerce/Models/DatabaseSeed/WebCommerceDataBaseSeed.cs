@@ -25,7 +25,11 @@ namespace WebCommerce.Models.DatabaseSeed
 						Cupom cupom = new Cupom();
 						Endereco endereco = new Endereco();
 						Produto produto = new Produto();
-						Promocao promocao = new Promocao();
+                        Produto produto1 = new Produto();
+                        Produto produto2 = new Produto();
+                        Produto produto3 = new Produto();
+                        Produto produto4 = new Produto();
+                        Promocao promocao = new Promocao();
 						Venda venda = new Venda();
 						
 						cupom.DescontoPorcentagem = 10;
@@ -82,7 +86,55 @@ namespace WebCommerce.Models.DatabaseSeed
 
 						contexto.SaveChanges();
 
-					}
+                        produto1.IdCategoria = categoria.Id;
+                        produto1.IdPromocao = promocao.Id;
+                        produto1.Nome = "Alien Ware Ggamer";
+                        produto1.Preco = 4000;
+                        produto1.Promocao = promocao;
+                        produto1.Categoria = categoria;
+                        produto1.Detalhes = "Esse Notebook é pra gamer apenas, topado";
+                        produto1.QuantidadeDisponivel = 5;
+                        contexto.Produtoes.Add(produto1);
+
+                        contexto.SaveChanges();
+
+                        produto2.IdCategoria = categoria.Id;
+                        produto2.IdPromocao = promocao.Id;
+                        produto2.Nome = "Monitor Ggamer";
+                        produto2.Preco = 1200;
+                        produto2.Promocao = promocao;
+                        produto2.Categoria = categoria;
+                        produto2.Detalhes = "Esse Monitor é pra gamer apenas, topado";
+                        produto2.QuantidadeDisponivel = 5;
+                        contexto.Produtoes.Add(produto2);
+
+                        contexto.SaveChanges();
+
+                        produto3.IdCategoria = categoria.Id;
+                        produto3.IdPromocao = promocao.Id;
+                        produto3.Nome = "Teclado Gamer";
+                        produto3.Preco = 100;
+                        produto3.Promocao = promocao;
+                        produto3.Categoria = categoria;
+                        produto3.Detalhes = "Esse Teclado é pra gamer apenas 20000DPI";
+                        produto3.QuantidadeDisponivel = 30;
+                        contexto.Produtoes.Add(produto3);
+
+                        contexto.SaveChanges();
+
+                        produto4.IdCategoria = categoria.Id;
+                        produto4.IdPromocao = promocao.Id;
+                        produto4.Nome = "Mouse Razer Gamer";
+                        produto4.Preco = 200;
+                        produto4.Promocao = promocao;
+                        produto4.Categoria = categoria;
+                        produto4.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto4.QuantidadeDisponivel = 20;
+                        contexto.Produtoes.Add(produto4);
+
+                        contexto.SaveChanges();
+
+                    }
                     catch (Exception)
                     {
                         dbTransaction.Rollback();

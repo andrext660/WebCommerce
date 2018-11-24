@@ -46,7 +46,7 @@ namespace WebCommerce.Controllers
        
         public ActionResult Details(int? id, int? idCategoria, int? idPromocao)
         {
-            if (id == null)
+            if (id == null || idCategoria == null || idPromocao == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
