@@ -7,64 +7,66 @@
 <h2>Details</h2>
 
 <div>
-	<h4>Produto</h4>
-	<hr />
-	<button type="button" id="Comprar">Comprar</button>
-	@Html.Hidden("email", User.Identity.Name)
-	<dl class="dl-horizontal">
-		<dt>
-			@Html.Hidden("IdProduto", Model.Id)
-		</dt>
-		<dt>
-			@Html.DisplayNameFor(model => model.Nome)
-		</dt>
+    <h4>Produto</h4>
+    <hr />
+    <button type="button" id="Comprar">Comprar</button>
+    @Html.Hidden("email", User.Identity.Name)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Hidden("IdProduto", Model.Id)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Nome)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Preco)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Preco)
-		</dd>
+        <dd>
+            R$@Html.DisplayFor(model => model.Preco)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.QuantidadeDisponivel)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeDisponivel)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.QuantidadeDisponivel)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeDisponivel)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Detalhes)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalhes)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Detalhes)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Detalhes)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Categoria)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Categoria.Nome)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Promocao)
-		</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Promocao)
+        </dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Promocao.DescontoPorcentagem)
-		</dd>
+        <dd>
+            @Html.DisplayFor(model => model.Promocao.DescontoPorcentagem)
+        </dd>
 
-	</dl>
+    </dl>
+    <span id="msg" style="color:red;" />
 </div>
+
 <p>
 	@{ if (User.IsInRole("Admin"))
         {
@@ -89,7 +91,9 @@
 					dataType: 'html',
 					cache: false,
 					async: true,
-					sucess: null
+                    success: function (data) {
+                        $("#msg").html(data);
+                    }
 				}
 			)
 		})
