@@ -60,15 +60,23 @@ namespace WebCommerce.Controllers
             {
                 return HttpNotFound();
             }
-            return View(produto.ToList());
+            return View(produto.FirstOrDefault());
         }
 
-		public void adicionarProdutoCarrinho(int idProduto, String email)
+		public String adicionarProdutoCarrinho(int idProduto, String email)
 		{
-			int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
-			db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
-			db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
-		}
+            if (Request.IsAjaxRequest())
+            {
+                int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
+                db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
+                db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
+                return "Produto Adicionado no carrinho";
+            }
+
+            return "Produto Adicionado no carrinho";
+
+
+        }
 
         // GET: Produto/Create
         [CustomAuthorize(Roles = "Admin")]
