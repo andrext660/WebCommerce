@@ -81,7 +81,8 @@ namespace WebCommerce.Controllers
             }
 
             // Requeira que o usuário tenha confirmado o email antes de logar
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
+
             if (user != null)
             {
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
@@ -93,7 +94,7 @@ namespace WebCommerce.Controllers
 
             // Isso não conta falhas de login em relação ao bloqueio de conta
             // Para permitir que falhas de senha acionem o bloqueio da conta, altere para shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -182,7 +183,7 @@ namespace WebCommerce.Controllers
 				model.Cliente = cliente;
                 model.Name = "Usuario";
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Cliente = model.Cliente };
+                var user = new ApplicationUser { UserName = model.Cliente.Nome, Email = model.Email, Cliente = model.Cliente };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

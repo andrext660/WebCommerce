@@ -25,7 +25,7 @@ namespace WebCommerce.Servicos
             minhaMensagem.Subject = assunto;
             minhaMensagem.Text = mensagem;
             minhaMensagem.Html = mensagem;
-            var credenciais = new NetworkCredential("usuario aqui", "senha aqui");
+            var credenciais = new NetworkCredential("Usuario aqui", "Senha aqui");
             
             //Cria um transporte web para enviar email
             var transporteWeb = new Web(credenciais);
