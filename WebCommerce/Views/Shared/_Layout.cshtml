@@ -26,7 +26,7 @@
             <div class=" navbar-collapse collapse ">
                 <ul class="nav navbar-nav">
 
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
                     <li>
                         @{
                             if (User.IsInRole("Admin"))
@@ -54,12 +54,12 @@
                             }
                             else
                             {
-                            <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+                            @*<li>@Html.ActionLink("Produto", "Index", "Produto")</li>*@
                         }
                         }
                         </li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
 
                     </ul>
                 @*<form class="form-inline my-2 my-lg-0">
