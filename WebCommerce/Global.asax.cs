@@ -62,7 +62,6 @@ namespace WebCommerce
                     Email = "admin@unit.br"
                 };
 
-                user.EmailConfirmed = true;
                 userManager.Create(user, "123456");
             }
           
