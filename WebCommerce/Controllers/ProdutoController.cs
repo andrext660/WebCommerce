@@ -65,35 +65,38 @@ namespace WebCommerce.Controllers
 
 		public String adicionarProdutoCarrinho(int idProduto)
 		{
-            if (Request.IsAjaxRequest())
-            {
+			if (Request.IsAjaxRequest())
+			{
+				if (!User.Identity.Name.Equals(""))
+				{
+					String nome = User.Identity.Name.ToString();
+					Cliente cliente = db.Clientes.Where(a => a.Nome == nome).FirstOrDefault();
+					int idCliente = cliente.Id;
+					int idVenda = db.Vendas.Where(a => a.IdCliente == idCliente).FirstOrDefault().Id;
+					Produto produto = db.Produtoes.Find(idProduto);
+					//adiciona o produto
+					if (db.Vendas.Find(idVenda).ListaProdutos.ContainsKey(db.Produtoes.Find(idProduto)))
+					{
+						//adiciona o produto, qtd+1
+						db.Vendas.Find(idVenda).ListaProdutos.Add(produto, db.Vendas.Find(idVenda).ListaProdutos[produto] + 1);
+					}
+					else
+					{
+						db.Vendas.Find(idVenda).ListaProdutos.Add(produto, 1);
+					}
 
-				String nome = User.Identity.Name.ToString();
-				Cliente cliente = db.Clientes.Where(a => a.Nome == nome).FirstOrDefault();
-				int idCliente = cliente.Id;
-				int idVenda = db.Vendas.Where(a => a.IdCliente == idCliente).FirstOrDefault().Id;
-				Produto produto = db.Produtoes.Find(idProduto);
-				//adiciona o produto
-				if (db.Vendas.Find(idVenda).ListaProdutos.ContainsKey(db.Produtoes.Find(idProduto))) 
-				{
-					//adiciona o produto, qtd+1
-					db.Vendas.Find(idVenda).ListaProdutos.Add(produto, db.Vendas.Find(idVenda).ListaProdutos[produto]+1);
-				}
-				else
-				{
-					db.Vendas.Find(idVenda).ListaProdutos.Add(produto, 1);
-				}
-				
-				//adiciona a venda na lista de produtos
-				if (!db.Produtoes.Find(idProduto).ListaVendas.Contains(db.Vendas.Find(idVenda)))
-				{
-					db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
-				}
+					//adiciona a venda na lista de produtos
+					if (!db.Produtoes.Find(idProduto).ListaVendas.Contains(db.Vendas.Find(idVenda)))
+					{
+						db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
+					}
 					return "Produto Adicionado no carrinho";
-            }
-
-            return "Produto Adicionado no carrinho";
-
+				}
+				//Mostra a tela de login para o usuário se autenticar
+				Response.Redirect("/Account/Login");
+			}
+				return "Error";
+			
 
         }
 
