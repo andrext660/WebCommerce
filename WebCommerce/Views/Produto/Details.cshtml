@@ -10,8 +10,7 @@
     <h4>Produto</h4>
     <hr />
     <button type="button" id="Comprar">Comprar</button>
-    @Html.Hidden("email", User.Identity.Name)
-    <dl class="dl-horizontal">
+	<dl class="dl-horizontal">
         <dt>
             @Html.Hidden("IdProduto", Model.Id)
         </dt>
@@ -80,14 +79,14 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-
+	@*Cria a funcao Ajax para ao clicar, acionar o metodo da url destinada*@
 	<script>
 		$(Comprar).click(function () {
 			$.ajax(
 				{
 					type: 'GET',
 					url: '/Produto/adicionarProdutoCarrinho',
-					data: { idProduto: $('#IdProduto').val(), email: $('#email').val() },
+					data: { idProduto: $('#IdProduto').val() },
 					dataType: 'html',
 					cache: false,
 					async: true,
