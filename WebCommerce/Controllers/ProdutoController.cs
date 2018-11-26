@@ -63,14 +63,33 @@ namespace WebCommerce.Controllers
             return View(produto.FirstOrDefault());
         }
 
-		public String adicionarProdutoCarrinho(int idProduto, String email)
+		public String adicionarProdutoCarrinho(int idProduto)
 		{
             if (Request.IsAjaxRequest())
             {
-                int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
-                db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
-                db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
-                return "Produto Adicionado no carrinho";
+
+				String nome = User.Identity.Name.ToString();
+				Cliente cliente = db.Clientes.Where(a => a.Nome == nome).FirstOrDefault();
+				int idCliente = cliente.Id;
+				int idVenda = db.Vendas.Where(a => a.IdCliente == idCliente).FirstOrDefault().Id;
+				Produto produto = db.Produtoes.Find(idProduto);
+				//adiciona o produto
+				if (db.Vendas.Find(idVenda).ListaProdutos.ContainsKey(db.Produtoes.Find(idProduto))) 
+				{
+					//adiciona o produto, qtd+1
+					db.Vendas.Find(idVenda).ListaProdutos.Add(produto, db.Vendas.Find(idVenda).ListaProdutos[produto]+1);
+				}
+				else
+				{
+					db.Vendas.Find(idVenda).ListaProdutos.Add(produto, 1);
+				}
+				
+				//adiciona a venda na lista de produtos
+				if (!db.Produtoes.Find(idProduto).ListaVendas.Contains(db.Vendas.Find(idVenda)))
+				{
+					db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
+				}
+					return "Produto Adicionado no carrinho";
             }
 
             return "Produto Adicionado no carrinho";
