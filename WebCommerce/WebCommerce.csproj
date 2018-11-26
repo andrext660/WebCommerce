@@ -410,6 +410,9 @@
     </Content>
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\WebCommerce.dll.config" />
+    <Content Include="img\img1.jpg" />
+    <Content Include="img\img2.jpg" />
+    <Content Include="img\img3.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

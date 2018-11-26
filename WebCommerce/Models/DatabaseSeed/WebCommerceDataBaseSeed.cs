@@ -29,6 +29,11 @@ namespace WebCommerce.Models.DatabaseSeed
                         Produto produto2 = new Produto();
                         Produto produto3 = new Produto();
                         Produto produto4 = new Produto();
+                        Produto produto5 = new Produto();
+                        Produto produto6 = new Produto();
+                        Produto produto7 = new Produto();
+                        Produto produto8 = new Produto();
+                        Produto produto9 = new Produto();
                         Promocao promocao = new Promocao();
 						Venda venda = new Venda();
 						
@@ -125,12 +130,72 @@ namespace WebCommerce.Models.DatabaseSeed
                         produto4.IdCategoria = categoria.Id;
                         produto4.IdPromocao = promocao.Id;
                         produto4.Nome = "Mouse Razer Gamer";
-                        produto4.Preco = 200;
+                        produto4.Preco = 4534;
                         produto4.Promocao = promocao;
                         produto4.Categoria = categoria;
                         produto4.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
-                        produto4.QuantidadeDisponivel = 20;
+                        produto4.QuantidadeDisponivel = 250;
                         contexto.Produtoes.Add(produto4);
+
+                        contexto.SaveChanges();
+
+                        produto5.IdCategoria = categoria.Id;
+                        produto5.IdPromocao = promocao.Id;
+                        produto5.Nome = "Mouse Razer Gamer";
+                        produto5.Preco = 3698;
+                        produto5.Promocao = promocao;
+                        produto5.Categoria = categoria;
+                        produto5.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto5.QuantidadeDisponivel = 210;
+                        contexto.Produtoes.Add(produto5);
+
+                        contexto.SaveChanges();
+
+                        produto6.IdCategoria = categoria.Id;
+                        produto6.IdPromocao = promocao.Id;
+                        produto6.Nome = "Mouse Razer Gamer";
+                        produto6.Preco = 2010;
+                        produto6.Promocao = promocao;
+                        produto6.Categoria = categoria;
+                        produto6.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto6.QuantidadeDisponivel = 230;
+                        contexto.Produtoes.Add(produto6);
+
+                        contexto.SaveChanges();
+
+                        produto7.IdCategoria = categoria.Id;
+                        produto7.IdPromocao = promocao.Id;
+                        produto7.Nome = "Mouse Razer Gamer";
+                        produto7.Preco = 2050;
+                        produto7.Promocao = promocao;
+                        produto7.Categoria = categoria;
+                        produto7.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto7.QuantidadeDisponivel = 240;
+                        contexto.Produtoes.Add(produto7);
+
+                        contexto.SaveChanges();
+
+                        produto8.IdCategoria = categoria.Id;
+                        produto8.IdPromocao = promocao.Id;
+                        produto8.Nome = "Mouse Razer Gamer";
+                        produto8.Preco = 2800;
+                        produto8.Promocao = promocao;
+                        produto8.Categoria = categoria;
+                        produto8.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto8.QuantidadeDisponivel = 260;
+                        contexto.Produtoes.Add(produto8);
+
+                        contexto.SaveChanges();
+
+                        produto9.IdCategoria = categoria.Id;
+                        produto9.IdPromocao = promocao.Id;
+                        produto9.Nome = "Mouse Razer Gamer";
+                        produto9.Preco = 2060;
+                        produto9.Promocao = promocao;
+                        produto9.Categoria = categoria;
+                        produto9.Detalhes = "Esse mouse é pra gamer apenas 20000DPI";
+                        produto9.QuantidadeDisponivel = 70;
+                        contexto.Produtoes.Add(produto9);
 
                         contexto.SaveChanges();
 
