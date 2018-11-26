@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Configuration;
 
-//Aqui está o usuario e senha para enviar email
+//Aqui está o usuario e senha para enviar email, quanod der comit retire-os do método!
 //Usuário: webcomerce.unit
 //Senha: unit1234
 
@@ -25,7 +25,7 @@ namespace WebCommerce.Servicos
             minhaMensagem.Subject = assunto;
             minhaMensagem.Text = mensagem;
             minhaMensagem.Html = mensagem;
-            var credenciais = new NetworkCredential("Usuario aqui", "Senha aqui");
+            var credenciais = new NetworkCredential("usuario aqui", "senha aqui");
             
             //Cria um transporte web para enviar email
             var transporteWeb = new Web(credenciais);
