@@ -22,11 +22,11 @@ namespace WebCommerce.Controllers
         // GET: Produto
         //[Authorize(Roles ="View")]
 
-        public ActionResult Index(string prod = "", string cat = "")
+        public ActionResult Index(string prod = "")
         {
-            var p = db.Produtoes.AsQueryable().Include(c => c.Categoria).Include(c => c.Promocao);
-            if (!string.IsNullOrEmpty(prod) || !string.IsNullOrEmpty(cat))
-                p = p.Where(c => c.Nome.Contains(prod) || c.Categoria.Nome.Contains(cat));
+            var p = db.Produtoes.AsQueryable();
+            if (!string.IsNullOrEmpty(prod))
+                p = p.Where(c => c.Nome.Contains(prod));
             p = p.OrderBy(c => c.Nome);
 
             if (Request.IsAjaxRequest())
