@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using WebCommerce.Models;
 using WebCommerce.Models.Autenticacao;
 using WebCommerce.Models.Classes;
@@ -64,14 +63,12 @@ namespace WebCommerce.Controllers
             return View(produto.FirstOrDefault());
         }
 
-		public String adicionarProdutoCarrinho(int idProduto)
+		public String adicionarProdutoCarrinho(int idProduto, String email)
 		{
             if (Request.IsAjaxRequest())
             {
-				String nomeCliente = Membership.GetUser().ProviderName.ToString();
-				// db.Users.Where(a => a.UserName == User.Identity.Name).First().Cliente.Id;
-				int idCliente = db.Clientes.Where(a => a.Nome == nomeCliente).FirstOrDefault().Id;
-				db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
+                int idCliente = db.Users.Where(a => a.Email == email).FirstOrDefault().Cliente.Id;
+                db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault().ListaProdutos.Add(db.Produtoes.Find(idProduto), 1);
                 db.Produtoes.Find(idProduto).ListaVendas.Add(db.Vendas.Where(p => p.IdCliente == idCliente).FirstOrDefault());
                 return "Produto Adicionado no carrinho";
             }
