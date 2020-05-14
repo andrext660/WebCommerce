@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using WebCommerce.Models;
 using WebCommerce.Models.Autenticacao;
 using WebCommerce.Models.Classes;
+using PagedList;
 
 namespace WebCommerce.Controllers
 {
@@ -22,17 +23,24 @@ namespace WebCommerce.Controllers
         // GET: Produto
         //[Authorize(Roles ="View")]
 
-        public ActionResult Index(string prod = "")
+        public ActionResult Index(int? pagina, string prod =" ")
         {
-            var p = db.Produtoes.AsQueryable();
-            if (!string.IsNullOrEmpty(prod))
-                p = p.Where(c => c.Nome.Contains(prod));
-            p = p.OrderBy(c => c.Nome);
 
+
+            int paginaTamanho = 5;
+            int paginaNumero = (pagina ?? 1);
+
+            var p = db.Produtoes.Include(x =>x.Categoria).Include(x=>x.Promocao).AsQueryable();
+            if (!string.IsNullOrEmpty(prod))
+                p = p.Where(c => c.Nome.Contains(prod) || c.Detalhes.Contains(prod) ||c.Categoria.Nome.Contains(prod)
+                ||c.Categoria.Descricao.Contains(prod)||c.Preco.ToString().Equals(prod)||c.Promocao.Descricao.Contains(prod));
+            p = p.OrderBy(c => c.Nome);
             if (Request.IsAjaxRequest())
                 return PartialView("_Produto", p.ToList());
             ViewBag.Categorias = new SelectList(db.Categorias, "Id", "Nome");
-            return View(p.ToList());
+            //return View(p.ToList());
+            return View(p.ToPagedList(paginaNumero, paginaTamanho));
+
         }
 
         //Metodo que traz a busca do auto complete jquery

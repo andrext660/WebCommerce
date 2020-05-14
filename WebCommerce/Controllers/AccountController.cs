@@ -162,7 +162,7 @@ namespace WebCommerce.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -196,7 +196,7 @@ namespace WebCommerce.Controllers
                     // Para obter mais informações sobre como habilitar a confirmação da conta e redefinição de senha, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar um email com este link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);            
                     await ServicoEmail.EnviarEmailAsync(model.Email, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
                     ViewBag.Message = "Verifique o seu email e confirme a sua conta, você tem que confirmar a sua conta antes de fazer o login ";
@@ -211,6 +211,9 @@ namespace WebCommerce.Controllers
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
             return View(model);
         }
+
+
+
 
         //
         // GET: /Account/ConfirmEmail

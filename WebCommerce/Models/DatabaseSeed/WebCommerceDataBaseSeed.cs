@@ -21,6 +21,7 @@ namespace WebCommerce.Models.DatabaseSeed
                     {
 						//Criado um objeto de cada entidade
 						Categoria categoria = new Categoria();
+                        Categoria categoria2 = new Categoria();
 						Cliente cliente = new Cliente();
 						Cupom cupom = new Cupom();
 						Endereco endereco = new Endereco();
@@ -34,6 +35,8 @@ namespace WebCommerce.Models.DatabaseSeed
                         Produto produto7 = new Produto();
                         Produto produto8 = new Produto();
                         Produto produto9 = new Produto();
+                        Produto produto10 = new Produto();
+                        Produto produto11 = new Produto();
                         Promocao promocao = new Promocao();
 						Venda venda = new Venda();
 						
@@ -47,7 +50,11 @@ namespace WebCommerce.Models.DatabaseSeed
 						categoria.Descricao = "Computadores com especificações técnicas mais avançadas";
 						contexto.Categorias.Add(categoria);
 
-						promocao.DataPrazo = DateTime.Parse("25/12/2018");
+                        categoria2.Nome = "Eletroeletrônicos";
+                        categoria2.Descricao = "Eletros em Geral";
+                        contexto.Categorias.Add(categoria2);
+
+                        promocao.DataPrazo = DateTime.Parse("25/12/2018");
 						promocao.DescontoPorcentagem = 5;
 						promocao.Descricao = "Desconto Teste";
 						promocao.Valido = true;
@@ -198,6 +205,33 @@ namespace WebCommerce.Models.DatabaseSeed
                         contexto.Produtoes.Add(produto9);
 
                         contexto.SaveChanges();
+
+
+                        produto10.IdCategoria = categoria2.Id;
+                        produto10.IdPromocao = promocao.Id;
+                        produto10.Nome = "Televisão";
+                        produto10.Preco = 1599;
+                        produto10.Promocao = promocao;
+                        produto10.Categoria = categoria2;
+                        produto10.Detalhes = "Televisão 29 polegadas";
+                        produto10.QuantidadeDisponivel = 10;
+                        contexto.Produtoes.Add(produto10);
+
+                        contexto.SaveChanges();
+
+                        produto11.IdCategoria = categoria2.Id;
+                        produto11.IdPromocao = promocao.Id;
+                        produto11.Nome = "MicroSystem Sony";
+                        produto11.Preco = 2999;
+                        produto11.Promocao = promocao;
+                        produto11.Categoria = categoria2;
+                        produto11.Detalhes = "MicroSystem de 70 Watts, Potência e Qualidade";
+                        produto11.QuantidadeDisponivel = 10;
+                        contexto.Produtoes.Add(produto11);
+
+                        contexto.SaveChanges();
+
+
 
                     }
                     catch (Exception)

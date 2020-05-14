@@ -2,50 +2,99 @@
     ViewBag.Title = "Contato";
 }
 <hr />
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="~/css/estilo.css" rel="stylesheet" />
+</head>
+<body>
+    <address class="Endereco">
+        <p>  Unit - Universidade Tiradentes</p>
+        <br>
+        <p>Av. Murilo Dantas, 300 - Farolândia, Aracaju - SE, 49032-490</p>
+        <br>
+        <p>Telefone </p>
+        <br />
+        <p> (79) 3218-2100</p>
+    </address>
 
-<address>
-    Unit - Universidade Tiradentes<br />
-    Av. Murilo Dantas, 300 - Farolândia, Aracaju - SE, 49032-490<br />
-    <abbr title="Telefone:">P:</abbr>
-    (79) 3218-2100
-</address>
-
-<address>
-    <table class="table">
-        <tr>
-            <td>Suporte</td>
-            <td>Contatos</td>
-        </tr>
-        <tr>
-            <td>André Souza</td>
-            <td>andre.souza@souunit.com.br</td>
-        </tr>
-        <tr>
-            <td>Deivide Mateus</td>
-            <td>deivide.mateus@souunit.com.br</td>
-        </tr>
-        <tr>
-            <td>Luiz Fernando</td>
-            <td>luiz.queiroz@souunit.com.br</td>
-        </tr>
-        <tr>
-            <td>Matheus Gama</td>
-            <td>matheus.gama@souunit.com.br</td>
-        </tr>
-        <tr>
-            <td>Raffael de Castro</td>
-            <td>raffael.castro@souunit.com.br</td>
-        </tr>
-        <tr>
-            <td>Silas Teixeira</td>
-            <td>silas.teixeira@souunit.com.br</td>
-        </tr>
-    </table>
-</address>
+    <address class="Aluno">
+        <table class="table">
+            <tr>
+                <td>Suporte</td>
+                <td>Contatos</td>
+            </tr>
+            <tr>
+                <td>André Souza</td>
+                <td>andre.souza@souunit.com.br</td>
+            </tr>
+            <tr>
+                <td>Deivide Mateus</td>
+                <td>deivide.mateus@souunit.com.br</td>
+            </tr>
+            <tr>
+                <td>Luiz Fernando</td>
+                <td>luiz.queiroz@souunit.com.br</td>
+            </tr>
+            <tr>
+                <td>Matheus Gama</td>
+                <td>matheus.gama@souunit.com.br</td>
+            </tr>
+            <tr>
+                <td>Raffael de Castro</td>
+                <td>raffael.castro@souunit.com.br</td>
+            </tr>
+            <tr>
+                <td>Silas Teixeira</td>
+                <td>silas.teixeira@souunit.com.br</td>
+            </tr>
+        </table>
+    </address>
 
 
+    <style>
+        body {
+            background-color: slategrey;
+        }
 
-@**Plano de Fundo Temporário *@
-<body background="https://mastermindblumenau.com.br/wp-content/uploads/2016/07/background-azul.jpg">
+        .Endereco {
+           color:black;
+           text-transform:uppercase;
+           text-shadow:50px;
+           font-style:italic;
+           font-weight:600;
+        }
+
+        .Aluno {
+            color:black;
+            font-weight:400;
+        }
+
+    </style>
 </body>
-@**Plano de Fundo Temporário *@
+
+</html>
+
+
+
+
+
+
+
+<style>
+
+    @***
+    body {
+        background-color: slategrey;
+    }
+    .Endereco {
+        color:black;
+        text-decoration:solid;
+        text-align:justify;
+    }
+
+    .Endereco p {
+        color:black;
+    }
+          ****@
+</style>

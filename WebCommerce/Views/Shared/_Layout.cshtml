@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body onload="relogio();">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -28,75 +29,70 @@
             </div>
 
             <div class=" navbar-collapse collapse ">
-				<ul class="nav navbar-nav">
 
-					<li>@Html.ActionLink("Início", "Index", "Home")</li>
-					<li>
-						@{
-							if (User.IsInRole("Admin"))
-							{
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Cadastros <span class="caret"></span>
-								</a>
+                <ul class="nav navbar-nav">
 
-								<ul class="nav dropdown-menu">
+                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
+                    <li>
+                        @{
+                            if (User.IsInRole("Admin"))
+                            {
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Cadastros <span class="caret"></span>
+                                </a>
 
-									<li>@Html.ActionLink("Cliente", "Index", "Cliente")</li>
-									<li>@Html.ActionLink("Endereco", "Index", "Endereco")</li>
-									<li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
-									<li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-									<li>@Html.ActionLink("Venda", "Index", "Venda")</li>
-									<li>@Html.ActionLink("Promocao", "Index", "Promocao")</li>
-									<li>@Html.ActionLink("Cupom", "Index", "Cupom")</li>
-									<li>@Html.ActionLink("Perfil", "Index", "Role")</li>
+                                <ul class="nav dropdown-menu">
+
+                                    <li>@Html.ActionLink("Cliente", "Index", "Cliente")</li>
+                                    <li>@Html.ActionLink("Endereco", "Index", "Endereco")</li>
+                                    <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                                    <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+                                    <li>@Html.ActionLink("Venda", "Index", "Venda")</li>
+                                    <li>@Html.ActionLink("Promocao", "Index", "Promocao")</li>
+                                    <li>@Html.ActionLink("Cupom", "Index", "Cupom")</li>
+                                    <li>@Html.ActionLink("Perfil", "Index", "Role")</li>
+
+                                </ul>
+                            }
+
+                            else
+                            {
+
+                            <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                        }
+                        }
 
 
-
-
-
-
-								</ul>
-							}
-							else{
-								<li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-								@*if (!User.Identity.Name.Equals("")){
-									<li>@Html.ActionLink("Venda", "Edit", "Venda")</li>
-									<li>@Html.ActionLink("Endereco", "Edit", "Endereco")</li>
-									}*@
-								}
-							}
-						</li>
-						<li>@Html.ActionLink("Sobre", "About", "Home")</li>
-						<li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-
-					</ul>
-                @*<form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                    </form>*@
-                @Html.Partial("_LoginPartial")
-            </div>
-
-            @*<div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Início", "Index", "Home")</li>
                         <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                         <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>*@
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - WebCommerce by PWEB1 - Turma 2018/2</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+                    </ul>
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - WebCommerce by PWEB1 - Turma 2018/2</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+
+
+
+    </body>
+
 </html>
+
+
+    
+   
+   

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebCommerce.Models.Classes.Produto>
+﻿
+@*@model PagedList.IPagedList<WebCommerce.Models.Classes.Produto>*@
+@model IEnumerable<WebCommerce.Models.Classes.Produto>
 
 <div id="ListProduto">
 
@@ -6,19 +8,20 @@
         @Html.Hidden("email", User.Identity.Name)
         @foreach (var item in Model)
         {
-        <div class="col-md-3">
-            @Html.Hidden("IdProduto", item.Id)
-            @*<img src="img/noticia-thumb.jpg" alt="noticia">*@
-            <h3>@Html.DisplayFor(modelItem => item.Nome)</h3>
-            <h4>@Html.DisplayFor(modelItem => item.Categoria.Nome)</h4>
-            <h4>R$@Html.DisplayFor(modelItem => item.Preco)</h4>
-            <p>@Html.ActionLink("Comprar", "Details", new { id = item.Id, idCategoria = item.IdCategoria, idPromocao = item.IdPromocao }, new { @class = "btn btn-success Comprar" })</p>
-            @*<button type="button" id="Comprar" class="btn btn-success Comprar" onclick="ComprarProduto(@item.Id,@User.Identity.Name);">Comprar</button>*@
-            @if (User.IsInRole("Admin"))
-    {
-        <button type="button" id="Comprar" class="btn btn-danger">Excluir</button>
-}
-        </div>
+            <div class="col-md-3">
+                @Html.Hidden("IdProduto", item.Id)
+                @*<img src="img/noticia-thumb.jpg" alt="noticia">*@
+                
+                <h3>@Html.DisplayFor(modelItem => item.Nome)</h3>
+                <h4>@Html.DisplayFor(modelItem => item.Categoria.Nome)</h4>
+                <h4>R$@Html.DisplayFor(modelItem => item.Preco)</h4>
+                <p>@Html.ActionLink("Comprar", "Details", new { id = item.Id, idCategoria = item.IdCategoria, idPromocao = item.IdPromocao }, new { @class = "btn btn-success Comprar" })</p>
+                @*<button type="button" id="Comprar" class="btn btn-success Comprar" onclick="ComprarProduto(@item.Id,@User.Identity.Name);">Comprar</button>*@
+                @if (User.IsInRole("Admin"))
+                {
+                    <button type="button" id="Comprar" class="btn btn-danger">Excluir</button>
+                }
+            </div>
         }
     </div>
 </div>
@@ -31,7 +34,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        function ComprarProduto(idprod,idmail) {
+        function ComprarProduto(idprod, idmail) {
             var idProduto = idprod;
             var idMail = idmail;
             var url = '/Produto/adicionarProdutoCarrinho';
@@ -39,8 +42,8 @@
 
         }
 
-           
-        
+
+
     </script>
 
 }
